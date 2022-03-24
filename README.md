@@ -43,10 +43,10 @@ This project will use the Django framework for a MVC based application using Pos
 ### Epics ###
 
 Epics were used to identify the broad features and design considerations before breaking them down into the indivual user stories used to design the site.
-1. As a user I can browse for posts I am interested in so that I can learn more about speedruns and games I am interested in.
-2. As a user I can make posts in various categories to share my ideas and accomplishments with others
-3. As a user I can like and comment on posts so that I can be involved in the community without creating posts.
-4. As an admin I can manage posts so that content can be categorized and moderated.
+1. As a user I can browse and search the different products available on the store and read about the business
+2. As a user I can register for an account with the site
+3. As a user I can purchase available products
+4. As an admin I can manage products on the store
 
 <a name="user-stories"></a>
 
@@ -55,12 +55,25 @@ Epics were used to identify the broad features and design considerations before 
 User Stories are grouped based on the epic they were distilled from.
 
 - Epic One: Browsing Content
-    - As a user I can view a list of posts on the site so that I can browse for posts I may be interested in
-    - As a user I can refine the list of posts by search or category so that I can better browse for a particular game or topic
-    - As a user I can click a specific post so that so that I can read its content
-    - As a user I can see the date a post was created on so that I know which posts are most recent/relevant
+    - As a user I can view a product list showing all available courses
+    - As a user I can view individual products for all the details
+    - As a user I can choose available times/dates for the class I want
+    - As a user I can search for specific products I am looking for
 
+- Epic Two: User Accounts
+    - As a user I can register for an account to save my details
+    - As a user I can log in and out of my account
+    - As a user I can view my order history when logged in
 
+- Epic Three: Accepting payment
+    - As a user I can view items in my cart
+    - As a user I can move my cart items to checkout for payment
+    - As a user I can securely provide payment details to pay for items in my cart
+
+- Epic Four: Admin controls
+    - As a site admin I can add new products to the store
+    - As a site admin I can edit existing product details
+    - As a site admin I can delete products from the store
 
 ## Design Choices ##
 
