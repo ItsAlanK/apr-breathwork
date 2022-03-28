@@ -81,6 +81,57 @@ User Stories are grouped based on the epic they were distilled from.
 
 ### Structure ###
 
+Below you will find the structure and models that are used in the database for this project. Diagram was created using [**DrawSQL**](https://drawsql.app/)
+
+![database structure image](docs/design/db-diagram.png)
+
+|   | Products Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| name  | CharField  |   |
+| description | TextField  |  |
+| duration  | Time  |   |
+| price  | Decimal  |   |
+| image_url  | Url  |   |
+| image  | Img  |   |
+| requires_signup  | Boolean  |   |
+
+|   | ProductVariant Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| product  | ForeignKey  | ManytoOne  |
+| date | Date  |  |
+| time  | Time  |   |
+| attendance_limit  | Integer  |   |
+| places_sold  | Integer  |   |
+| meeting_invite_link  | Url  |   |
+
+|   | Order Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| order_number  | Int  |   |
+| full_name | String  |  |
+| email  | Email  |   |
+| phone  | Phone  |   |
+| date  | Date  |   |
+| grand_total  | Decimal  |   |
+| user_profile  | ForeignKey  | ManytoOne  |
+
+|   | OrderLineItem Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| order  | ForeignKey  | ManytoOne  |
+| product | ForeignKey  | ManytoMany |
+| line_item_total  | Decimal  |   |
+
+|   | UserProfile Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| user  | ForeignKey  | OnetoOne  |
+| paid_member_from | Date  |  |
+
+UserProfile has a property `is_paid_member` which is set to True if the user purchases a multi session course to access replays of classes (Not available for once offs) Gets set back to False after set amount of time has elapsed since `paid_member_from`.
+
 
 <a name="wireframes"></a>
 
