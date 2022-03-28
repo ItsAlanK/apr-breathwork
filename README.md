@@ -1,7 +1,7 @@
 # APR Breathwork #
 
 ![Example of image on all devices](docs/design/responsive-img.png)
-APR Breathwork is an ecommerce site designed to be used in the future by my partner who is currently in training to be a breathwork coach. After her studies she will be providing 1 to 1 and group breathwork classes both as 1 offs and 6 week courses. So she will be in need of a website where she can both advertise and sell these courses and classes
+APR Breathwork is an ecommerce site designed to be used in the future by my partner, [**Aoife**](https://www.instagram.com/aoife.p.r/), who is currently in training to be a breathwork coach. After her studies she will be providing 1 to 1 and group breathwork classes both as 1 offs and 6 week courses. So she will be in need of a website where she can both advertise and sell these courses and classes
 
 This platform will provide user's with a platform where they can:
 - Read a bit about Aoife's background and qualifications
@@ -143,6 +143,11 @@ Wireframes have been made for desktop, tablet and mobile versions of each page o
 
 ### Colors & Fonts ###
 
+Main colors chosen for site (Yellow and Brown/Grey) were chosen to match current logo and aesthetic of her social media and personal site.
+
+[**Coolors.co**](https://coolors.co/) was then used to generate a red/green/blue tone to match which could be used for warnings and alerts on the site.
+
+![Color palette for design](docs/design/color-palette.png)
 
 <a name="features"></a>
 
