@@ -87,7 +87,7 @@ Below you will find the structure and models that are used in the database for t
 
 |   | Products Model  |   |
 |---|---|---|
-| id  | IntegerField  |   |
+| id  | IntegerField  | OnetoMany (ProductVariants)  |
 | name  | CharField  |   |
 | description | TextField  |  |
 | duration  | Time  |   |
@@ -99,7 +99,7 @@ Below you will find the structure and models that are used in the database for t
 |   | ProductVariant Model  |   |
 |---|---|---|
 | id  | IntegerField  |   |
-| product  | ForeignKey  | ManytoOne  |
+| product  | ForeignKey  | ManytoOne (ProductID) |
 | date | Date  |  |
 | time  | Time  |   |
 | attendance_limit  | Integer  |   |
@@ -115,19 +115,19 @@ Below you will find the structure and models that are used in the database for t
 | phone  | Phone  |   |
 | date  | Date  |   |
 | grand_total  | Decimal  |   |
-| user_profile  | ForeignKey  | ManytoOne  |
+| user_profile  | ForeignKey  | ManytoOne (UserProfileID) |
 
 |   | OrderLineItem Model  |   |
 |---|---|---|
 | id  | IntegerField  |   |
-| order  | ForeignKey  | ManytoOne  |
-| product | ForeignKey  | ManytoMany |
+| order  | ForeignKey  | ManytoOne (OrderID) |
+| product | ForeignKey  | ManytoMany (ProductID) |
 | line_item_total  | Decimal  |   |
 
 |   | UserProfile Model  |   |
 |---|---|---|
 | id  | IntegerField  |   |
-| user  | ForeignKey  | OnetoOne  |
+| user  | ForeignKey  | OnetoOne (AuthUserID) |
 | paid_member_from | Date  |  |
 
 UserProfile has a property `is_paid_member` which is set to True if the user purchases a multi session course to access replays of classes (Not available for once offs) Gets set back to False after set amount of time has elapsed since `paid_member_from`.
