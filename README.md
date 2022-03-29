@@ -57,7 +57,7 @@ User Stories are grouped based on the epic they were distilled from.
 - Epic One: Browsing Content
     - As a user I can view a product list showing all available courses
     - As a user I can view individual products for all the details
-    - As a user I can choose available times/dates for the class I want
+    - As a user I can view and select available times/dates for the class I want
     - As a user I can search for specific products I am looking for
 
 - Epic Two: User Accounts
@@ -145,7 +145,7 @@ Wireframes have been made for desktop, tablet and mobile versions of each page o
 
 Main colors chosen for site (Yellow and Brown/Grey) were chosen to match current logo and aesthetic of her social media and personal site.
 
-[**Coolors.co**](https://coolors.co/) was then used to generate a red/green/blue tone to match which could be used for warnings and alerts on the site.
+[**Coolors.co**](https://coolors.co/) was then used to generate a red/green/blue tone to match which could be used for warnings and alerts on the site. These will be used along with a clean white background.
 
 ![Color palette for design](docs/design/color-palette.png)
 
