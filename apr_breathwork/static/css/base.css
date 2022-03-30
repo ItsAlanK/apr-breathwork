@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&family=Poppins:wght@300&display=swap');
 
 html {
     height: 100%;
@@ -43,19 +43,29 @@ body {
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #222;
+.btn-grey:hover,
+.btn-grey:active,
+.btn-grey:focus {
+    background: #59514D;
     color: white;
 }
 
-.text-black {
-    color: #000 !important;
+.text-grey {
+    color: #59514D !important;
 }
 
 .border-black {
     border: 1px solid black !important;
+}
+
+.navbar-brand {
+    font-size: 3em;
+    float: left;
+    font-family: 'Island Moments', cursive;
+}
+
+.jumbotron {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* -------------------------------- Media Queries */
