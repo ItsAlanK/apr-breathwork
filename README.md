@@ -91,31 +91,31 @@ Below you will find the structure and models that are used in the database for t
 | id  | IntegerField  | OnetoMany (ProductVariants)  |
 | name  | CharField  |   |
 | description | TextField  |  |
-| duration  | Time  |   |
-| price  | Decimal  |   |
-| image_url  | Url  |   |
-| image  | Img  |   |
-| requires_signup  | Boolean  |   |
+| duration  | DurationField  |   |
+| price  | DecimalField  |   |
+| image_url  | URLField  |   |
+| image  | ImageField  |   |
+| requires_signup  | BooleanField  |   |
 
 |   | ProductVariant Model  |   |
 |---|---|---|
 | id  | IntegerField  |   |
 | product  | ForeignKey  | ManytoOne (ProductID) |
-| date | Date  |  |
-| time  | Time  |   |
-| attendance_limit  | Integer  |   |
-| places_sold  | Integer  |   |
-| meeting_invite_link  | Url  |   |
+| date | DateField  |  |
+| time  | TimeField  |   |
+| attendance_limit  | IntegerField  |   |
+| places_sold  | IntegerField  |   |
+| meeting_invite_link  | URLField  |   |
 
 |   | Order Model  |   |
 |---|---|---|
 | id  | IntegerField  |   |
-| order_number  | Int  |   |
-| full_name | String  |  |
-| email  | Email  |   |
-| phone  | Phone  |   |
-| date  | Date  |   |
-| grand_total  | Decimal  |   |
+| order_number  | IntegerField  |   |
+| full_name | CharField  |  |
+| email  | EmailField  |   |
+| phone  | CharField  |   |
+| date  | DateField  |   |
+| grand_total  | DecimalField  |   |
 | user_profile  | ForeignKey  | ManytoOne (UserProfileID) |
 
 |   | OrderLineItem Model  |   |
@@ -129,9 +129,10 @@ Below you will find the structure and models that are used in the database for t
 |---|---|---|
 | id  | IntegerField  |   |
 | user  | ForeignKey  | OnetoOne (AuthUserID) |
-| paid_member_from | Date  |  |
+| paid_member_from | DateField  |  |
+| is_paid_member | BooleanField  | Default False  |
 
-UserProfile has a property `is_paid_member` which is set to True if the user purchases a multi session course to access replays of classes (Not available for once offs) Gets set back to False after set amount of time has elapsed since `paid_member_from`.
+`is_paid_member` is set to True if the user purchases a multi session course to access replays of classes (Not available for once offs) Gets set back to False after set amount of time has elapsed since `paid_member_from`.
 
 
 <a name="wireframes"></a>
