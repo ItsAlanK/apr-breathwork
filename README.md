@@ -59,6 +59,7 @@ User Stories are grouped based on the epic they were distilled from.
     - As a user I can view individual products for all the details
     - As a user I can view and select available times/dates for the class I want
     - As a user I can search for specific products I am looking for
+    - As a user I can read additional information about the business
 
 - Epic Two: User Accounts
     - As a user I can register for an account to save my details
