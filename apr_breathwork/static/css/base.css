@@ -12,6 +12,17 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.overlay {
+    /* Covers Background image */
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -21,8 +32,16 @@ body {
     width: 1.5rem;
 }
 
+/* Buttons and Links */
+
 .logo-font {
     text-transform: uppercase;
+}
+
+.navbar-brand {
+    font-size: 3em;
+    float: left;
+    font-family: 'Island Moments', cursive;
 }
 
 .main-logo-link {
@@ -50,18 +69,14 @@ body {
     color: white;
 }
 
+/* Text and Borders */
+
 .text-grey {
     color: #59514D !important;
 }
 
 .border-black {
     border: 1px solid black !important;
-}
-
-.navbar-brand {
-    font-size: 3em;
-    float: left;
-    font-family: 'Island Moments', cursive;
 }
 
 .jumbotron {
