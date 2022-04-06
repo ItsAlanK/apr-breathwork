@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import Product
 
 
-def all_products(request):
+def products(request):
+
     """ View which returns products list """
 
     products = Product.objects.all()
