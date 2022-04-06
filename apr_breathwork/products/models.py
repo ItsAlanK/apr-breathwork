@@ -1,9 +1,13 @@
-from django.db import models
 import datetime
+from django.db import models
 
 
 class Category(models.Model):
     """ Model for product categories """
+    class Meta:
+        """ Adjust plural of model name in admin """
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -41,7 +45,4 @@ class ProductVariant(models.Model):
 
     def __str__(self):
         product = self.product.name
-        date = str(self.date)
-        time = str(self.time)
-        obj_name = product + ' | ' + date + ' / ' + time
-        return obj_name
+        return product
