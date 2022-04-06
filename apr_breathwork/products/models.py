@@ -40,5 +40,8 @@ class ProductVariant(models.Model):
     meeting_invite_link = models.URLField(max_length=1024, null=True, blank=True)
 
     def __str__(self):
-        obj_name = self.product.name + ' | ' + str(self.date) + ' / ' + str(self.time)
+        product = self.product.name
+        date = str(self.date)
+        time = str(self.time)
+        obj_name = product + ' | ' + date + ' / ' + time
         return obj_name
