@@ -48,6 +48,13 @@
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
                                     <div class="col">
+                                        {% if product.category %}
+                                        <small>
+                                            <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                                                {{ product.category.friendly_name }}
+                                            </a>
+                                        </small>
+                                        {% endif %}
                                         <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                                     </div>
                                 </div>
