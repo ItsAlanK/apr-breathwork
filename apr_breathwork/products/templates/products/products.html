@@ -14,7 +14,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center">
-                <h2 class="logo-font">All Products</h2>
+                <h2 class="logo-font">
+                    {% if current_category %}
+                        {% for c in current_category %}
+                            {{ c.name }}
+                        {% endfor %}
+                    {% else %}
+                        Services
+                    {% endif %}
+                </h2>
                 <hr class="w-50 mx-auto">
             </div>
         </div>
