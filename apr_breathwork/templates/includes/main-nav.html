@@ -5,7 +5,8 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle mx-4" href="{% url 'products' %}" id="services-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <ul class="dropdown-menu" aria-labelledby="services-dropdown">
+          <li><a class="dropdown-item" href="{% url 'products' %}">All</a></li>
           <li><a class="dropdown-item" href="{% url 'products' %}?category=classes">Classes</a></li>
           <li><a class="dropdown-item" href="{% url 'products' %}?category=courses">Courses</a></li>
           <li><a class="dropdown-item" href="{% url 'products' %}?category=personal_classes">1 on 1's</a></li>
