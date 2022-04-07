@@ -17,7 +17,7 @@
                 <h2 class="logo-font">
                     {% if current_category %}
                         {% for c in current_category %}
-                            {{ c.name }}
+                            {{ c.friendly_name }}
                         {% endfor %}
                     {% else %}
                         Services
