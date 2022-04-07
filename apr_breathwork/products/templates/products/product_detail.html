@@ -38,6 +38,11 @@
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                    {% for v in variants %}
+                        {% if v.places_sold < v.attendance_limit %}
+                            <p>{{ v.date }}: {{ v.time }}</p>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

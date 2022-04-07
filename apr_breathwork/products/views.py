@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category
+from .models import Product, Category, ProductVariant
 
 
 def products(request):
@@ -42,9 +42,11 @@ def product_detail(request, product_id):
     """ View which returns detailed view of the requested product """
 
     product = get_object_or_404(Product, pk=product_id)
+    variants = ProductVariant.objects.filter(product=product)
 
     context = {
         'product': product,
+        'variants': variants,
     }
 
     return render(request, 'products/product_detail.html', context)
