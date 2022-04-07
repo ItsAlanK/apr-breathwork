@@ -30,8 +30,10 @@ class ProductVariantAdmin(admin.ModelAdmin):
         'date',
         'time',
         'attendance_limit',
+        'places_sold'
     )
 
+    readonly_fields=('places_sold',)
     ordering = ('date', 'time')
 
 
