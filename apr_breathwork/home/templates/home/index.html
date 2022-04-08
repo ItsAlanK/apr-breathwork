@@ -2,26 +2,9 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+    {% include 'home/components/header-padding.html'%}
 {% endblock%}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-11 col-lg-8 my-auto mx-auto jumbotron rounded">
-                <h1 class="display-4 logo-font text-grey">
-                    Explore Aoife PR's Breathwork Courses
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded text-uppercase py-3">Shop Now</a>
-                    </h4>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'home/components/hero-section.html' %}
 {% endblock %}
