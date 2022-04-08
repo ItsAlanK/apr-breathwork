@@ -105,12 +105,20 @@ body {
     .header-container {
         padding-top: 164px;
     }
+
+    .header-container {
+        padding-bottom: 50px;
+    }
 }
 
 /* add extra padding to push content below navbar on mobile */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
+    }
+
+    .footer-container {
+        padding-bottom: 50px;
     }
 
     .body {
