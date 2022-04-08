@@ -1,0 +1,25 @@
+<form class="form" action="#" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-12">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Choose a Date/Time</option>
+                {% for v in variants %}
+                    {% if v.places_sold < v.attendance_limit %}
+                        <option>{{ v.date }}: {{ v.time }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-12">
+            <a href="{% url 'products' %}" class="btn btn-grey rounded mt-5">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
+            <input type="submit" class="btn btn-grey rounded text-uppercase mt-5" value="Add to Bag">
+        </div>
+        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+    </div>
+</form>
