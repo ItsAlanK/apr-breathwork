@@ -17,9 +17,11 @@
         for (var i=0; i<timeSelector.length; i++) {
             if (timeSelector.options[i].id == chosenDate) {
                 timeSelector.options[i].classList.remove("d-none");
+                timeSelector.selectedIndex = null; 
             }
             else {
                 timeSelector.options[i].classList.add("d-none");
+                timeSelector.selectedIndex = null;
             }
         }
     });
