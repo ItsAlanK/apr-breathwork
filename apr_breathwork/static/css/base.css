@@ -23,6 +23,10 @@ body {
     z-index: -1;
 }
 
+.footer-container {
+    padding-bottom: 50px;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -115,10 +119,6 @@ body {
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
-    }
-
-    .footer-container {
-        padding-bottom: 50px;
     }
 
     .body {
