@@ -10,7 +10,7 @@ def add_to_cart(request, item_id):
 
     date = request.POST.get('date')
     time = request.POST.get('time')
-    variant = date + "," + time
+    variant = date + "/" + time
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
