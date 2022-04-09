@@ -47,9 +47,19 @@ class TestProductDetailView(TestCase):
     """ Test the product detail page view """
 
     def test_get_product_detail_page_response(self):
-        """Test response for product detail page and correct template used """
+        """ Test response for product detail page and correct template used """
 
         product_1 = Product.objects.create(name='Test product', price=1, duration=1)
         response = self.client.get('/products/1')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/product_detail.html')
+
+    def test_product_detail_uses_correct_product(self):
+        """
+        Test that the product detail page uses the correct product
+        """
+
+        product_1 = Product.objects.create(name='Test product', price=1, duration=1)
+        response = self.client.get(f'/products/{product_1.id}')
+        product_on_page = response.context['product']
+        self.assertEqual(product_on_page.name, product_1.name)
