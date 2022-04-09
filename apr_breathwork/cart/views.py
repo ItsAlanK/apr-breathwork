@@ -9,13 +9,17 @@ def add_to_cart(request, item_id):
 
     date = request.POST.get('date')
     time = request.POST.get('time')
+    variant = date + "," + time
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):
-        print('item already in bag')
+        if variant in cart[item_id]:
+            print("Already in cart")
+        else:
+            cart[item_id] += [variant]
     else:
-        cart[item_id] = date + time
+        cart[item_id] = [variant]
 
     request.session['cart'] = cart
     print(request.session['cart'])
