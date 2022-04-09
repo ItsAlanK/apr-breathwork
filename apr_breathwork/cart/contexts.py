@@ -14,11 +14,22 @@ def cart_contents(request):
         product = get_object_or_404(Product, pk=item_id)
         amount = len(variants)
         total += product.price * amount
+        dates = []
+        times = []
+
+        for variant in variants:
+            split_variant = variant.rsplit("/")
+            date, time = split_variant[0],split_variant[1]
+            dates += [date]
+            times += [time]
+
         cart_items.append({
             'item_id': item_id,
             'amount': amount,
             'product': product,
             'variants': variants,
+            'dates': dates,
+            'times': times,
         })
 
     context = {
