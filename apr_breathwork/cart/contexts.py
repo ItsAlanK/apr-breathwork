@@ -13,6 +13,7 @@ def cart_contents(request):
     for item_id, variants in cart.items():
         product = get_object_or_404(Product, pk=item_id)
         amount = len(variants)
+        subtotal = product.price * amount
         total += product.price * amount
         dates = []
         times = []
@@ -30,6 +31,7 @@ def cart_contents(request):
             'variants': variants,
             'dates': dates,
             'times': times,
+            'subtotal': subtotal,
         })
 
     context = {
