@@ -19,3 +19,22 @@
         </div>
     </div>
 {% endblock %}
+
+{% block postloadjs %}
+<script type="text/javascript">
+    var dateSelector = document.getElementById("date");
+    var timeSelector = document.getElementById("time");
+    dateSelector.addEventListener("change", function() {
+        chosenDate = dateSelector.options[dateSelector.selectedIndex].value;
+        for (var i=0; i<timeSelector.length; i++) {
+            if (timeSelector.options[i].id == chosenDate) {
+                timeSelector.options[i].classList.remove("d-none");
+            }
+            else {
+                timeSelector.options[i].classList.add("d-none");
+            }
+        }
+    });
+
+</script>
+{% endblock %}
