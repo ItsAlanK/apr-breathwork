@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 def view_cart(request):
     """ View which returns cart contents page """
@@ -13,9 +14,12 @@ def add_to_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
+    # Checks if product is in cart already
+    # then checks if same variant is in cart
+    # if not adds new variant/product to cart
     if item_id in list(cart.keys()):
         if variant in cart[item_id]:
-            print("Already in cart")
+            messages.error(request, "This class is already your cart!")
         else:
             cart[item_id] += [variant]
     else:
