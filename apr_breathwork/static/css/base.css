@@ -36,6 +36,31 @@ body {
     width: 1.5rem;
 }
 
+/* BS Color Resets */
+.bg-success {
+    color: #17A398 !important;
+}
+
+.arrow-success {
+    color: #17A398 !important;
+}
+
+.bg-info {
+    color: #23B5D3 !important;
+}
+
+.arrow-info {
+    color: #23B5D3 !important;
+}
+
+.bg-danger {
+    color: #EF8275 !important;
+}
+
+.arrow-danger {
+    color: #EF8275 !important;
+}
+
 /* Buttons and Links */
 
 .logo-font {
@@ -120,6 +145,23 @@ body {
 
 .remove-item {
     cursor: pointer;
+}
+
+/* Messages/Toasts */
+
+.message-container {
+    position: fixed;
+    z-index: 9999;
+    top: 148px;
+    right: 15px;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
 }
 
 /* -------------------------------- Media Queries */

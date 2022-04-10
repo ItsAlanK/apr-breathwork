@@ -21,5 +21,6 @@
 {% endblock %}
 
 {% block postloadjs %}
+{{ block.super }}
 <script src="{% static 'js/date-time-selector.js' %}"></script>
 {% endblock %}

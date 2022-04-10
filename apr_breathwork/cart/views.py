@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from products.models import ProductVariant
+from products.models import ProductVariant, Product
 
 def view_cart(request):
     """ View which returns cart contents page """
@@ -20,7 +20,7 @@ def add_to_cart(request, item_id):
     # if not adds new variant/product to cart
     if item_id in list(cart.keys()):
         if variant in cart[item_id]:
-            messages.error(request, "This class is already your cart!")
+            messages.success(request, "This class is already your cart!")
         else:
             cart[item_id] += [variant]
     else:

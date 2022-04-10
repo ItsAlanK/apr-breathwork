@@ -54,7 +54,11 @@
     </header>
 
     {% if messages %}
-        <div class="message-container"></div>
+        <div class="message-container">
+            {% for message in messages %}
+                {% include 'components/toasts/toast-success.html' %}
+            {% endfor %}
+        </div>
     {% endif %}
 
     {% block page_header %}
@@ -67,6 +71,11 @@
     {% include 'layout/footer.html' %}
 
     {% block postloadjs %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.toast').toast('show');
+            })
+        </script>
     {% endblock %}
 
 </body>
