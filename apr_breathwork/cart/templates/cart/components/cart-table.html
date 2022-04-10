@@ -26,13 +26,13 @@
             <p class="my-0">${{ item.product.price }}</p>
         </td>
         <td class="py-3">
-            {% for t in item.times %}
-            <p class="my-0">{{ t }}</p>
+            {% for v in item.variants_selected %}
+            <p class="my-0">{{ v.time }}</p>
             {% endfor %}
         </td>
         <td class="py-3">
-            {% for d in item.dates %}
-            <p class="my-0">{{ d }}</p>
+            {% for v in item.variants_selected %}
+            <p class="my-0">{{ v.date }}</p>
             {% endfor %}
         </td>
         <td class="py-3">
