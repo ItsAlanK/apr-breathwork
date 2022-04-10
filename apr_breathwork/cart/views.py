@@ -42,16 +42,16 @@ def remove_from_cart(request, var_id):
     # If more than 1 variant, removes variant
     # If only 1 variant, removes product
     try:
-        for item in cart:
-            value = cart.get(item)
-            for i in value:
-                if date_time in i:
-                    if len(value) > 1:
-                        value.remove(i)
+        for product in cart:
+            variants = cart.get(product)
+            for var_instance in variants:
+                if date_time in var_instance:
+                    if len(variants) > 1:
+                        variants.remove(var_instance)
                         request.session['cart'] = cart
                         raise StopIteration
                     else:
-                        del cart[item]
+                        del cart[product]
                         request.session['cart'] = cart
                         raise StopIteration
     except StopIteration:
