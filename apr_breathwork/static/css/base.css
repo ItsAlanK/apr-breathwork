@@ -106,6 +106,18 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.text-info {
+    color: #23B5D3 !important;
+}
+
+.text-success {
+    color: #17A398 !important;
+}
+
+.text-danger {
+    color: #EF8275 !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
