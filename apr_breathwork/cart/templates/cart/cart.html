@@ -35,7 +35,7 @@
     </div>
 {% endblock %}
 
-{% block postloadjs %}
+<!-- {% block postloadjs %}
 
 <script type="text/javascript">
     // Remove item and reload on click
@@ -43,7 +43,7 @@
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var variant = $(this).data('variant');
-        var url = `/cart/remove/${itemId}`;
+        var url = `/cart/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken, 'variant_selected': variant};
 
         $.post(url, data)
@@ -52,4 +52,4 @@
          });
     })
 </script>
-{% endblock %}
+{% endblock %} -->
