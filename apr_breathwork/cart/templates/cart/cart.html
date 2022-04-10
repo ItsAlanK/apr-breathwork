@@ -34,22 +34,3 @@
         </div>
     </div>
 {% endblock %}
-
-<!-- {% block postloadjs %}
-
-<script type="text/javascript">
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var variant = $(this).data('variant');
-        var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'variant_selected': variant};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
-</script>
-{% endblock %} -->
