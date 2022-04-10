@@ -118,6 +118,10 @@ body {
     color: #EF8275 !important;
 }
 
+.remove-item {
+    cursor: pointer;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

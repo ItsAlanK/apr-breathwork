@@ -28,11 +28,13 @@
         <td class="py-3">
             {% for v in item.variants_selected %}
             <p class="my-0">{{ v.time }}</p>
+            <br>
             {% endfor %}
         </td>
         <td class="py-3">
             {% for v in item.variants_selected %}
             <p class="my-0">{{ v.date }}</p>
+            <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-variant="{{ item.v }}"><small>Remove</small></a>
             {% endfor %}
         </td>
         <td class="py-3">
