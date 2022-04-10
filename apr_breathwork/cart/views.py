@@ -34,6 +34,7 @@ def remove_from_cart(request, var_id):
 
     cart = request.session.get('cart', {})
     variant = get_object_or_404(ProductVariant, pk=var_id)
+    # Format date and time to match format in cart
     date = variant.date.strftime('%B %d, %Y')
     time = variant.time.strftime('%H:%M')
     date_time = date + "/" + time
