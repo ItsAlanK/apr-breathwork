@@ -15,7 +15,7 @@
                 <option selected>Choose a Time (Must Choose Date First)</option>
                 {% for v in variants %}
                     {% if v.places_sold < v.attendance_limit %}
-                        <option id="{{ v.date }}" class="d-none">{{ v.time }}</option>
+                        <option id="{{ v.date }}" class="d-none">{{ v.time | date:"H:i" }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
