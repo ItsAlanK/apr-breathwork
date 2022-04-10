@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect
+from datetime import datetime
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib import messages
+from products.models import ProductVariant
 
 def view_cart(request):
     """ View which returns cart contents page """
@@ -27,3 +29,32 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
     return redirect(redirect_url)
+
+def remove_from_cart(request, var_id):
+    """ Remove chosen item & variant from cart """
+
+    cart = request.session.get('cart', {})
+    variant = get_object_or_404(ProductVariant, pk=var_id)
+    date = variant.date.strftime('%B %d, %Y')
+    time = variant.time.strftime('%H:%M')
+    date_time = date + "/" + time
+    # Loops through cart dict items
+    # Loops through variant list for each item
+    # If more than 1 variant, removes variant
+    # If only 1 variant, removes product
+    try:
+        for item in cart:
+            value = cart.get(item)
+            for i in value:
+                if date_time in i:
+                    if len(value) > 1:
+                        value.remove(i)
+                        request.session['cart'] = cart
+                        raise StopIteration
+                    else:
+                        del cart[item]
+                        request.session['cart'] = cart
+                        raise StopIteration
+    except StopIteration:
+        pass
+    return render(request, 'cart/cart.html')

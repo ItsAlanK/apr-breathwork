@@ -34,7 +34,7 @@
         <td class="py-3">
             {% for v in item.variants_selected %}
             <p class="my-0">{{ v.date }}</p>
-            <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-variant="{{ item.v }}"><small>Remove</small></a>
+            <a href="{% url 'remove_from_cart' v.id %}" class="remove-item text-danger" id="remove_{{ item.item_id }}" data-variant="{{ v }}"><small>Remove</small></a>
             {% endfor %}
         </td>
         <td class="py-3">
