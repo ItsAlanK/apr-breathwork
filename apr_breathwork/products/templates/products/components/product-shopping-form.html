@@ -2,7 +2,7 @@
     {% csrf_token %}
     <div class="form-row">
         <div class="col-12">
-            <select id ="date" name="date" class="form-select" aria-label="Select a date">
+            <select required id ="date" name="date" class="form-select" aria-label="Select a date">
                 <option selected>Choose a Date</option>
                 {% for v in variants %}
                     {% if v.places_sold < v.attendance_limit %}
@@ -11,7 +11,7 @@
                 {% endfor %}
             </select>
             <br>
-            <select id="time" name="time" class="form-select" aria-label="Select a time">
+            <select required id="time" name="time" class="form-select" aria-label="Select a time">
                 <option selected>Choose a Time (Must Choose Date First)</option>
                 {% for v in variants %}
                     {% if v.places_sold < v.attendance_limit %}
