@@ -63,12 +63,31 @@ body {
     color: white;
 }
 
+.btn-grey {
+    background: #59514D;
+    color: white;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
 .btn-grey:hover,
 .btn-grey:active,
 .btn-grey:focus {
+    border-color: #59514D;
+    color: #59514D;
+    background: white;
+}
+
+.btn-grey-outline {
+    border-color: #59514D;
+    color: #59514D;
+    background: white;
+}
+
+.btn-grey-outline:hover,
+.btn-grey-outline:active,
+.btn-grey-outline:focus {
     background: #59514D;
     color: white;
 }
