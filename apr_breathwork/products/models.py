@@ -45,4 +45,6 @@ class ProductVariant(models.Model):
 
     def __str__(self):
         product = self.product.name
-        return product
+        date = self.date.strftime('%B %d, %Y')
+        time = self.time.strftime('%H:%M')
+        return product + " " + date + " " + time
