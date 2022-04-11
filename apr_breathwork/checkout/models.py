@@ -24,6 +24,8 @@ class Order(models.Model):
         """ Set total value for order, summing lineitem values """
 
         self.total = self.lineitems.aggregate(Sum('line_item_total'))['line_item_total__sum']
+        if not self.total:
+            self.total = 0
         self.save()
 
     def save(self, *args, **kwargs):
