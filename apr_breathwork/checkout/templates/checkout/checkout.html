@@ -20,86 +20,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-lg-6 order-lg-last mb-5">
-                <div class="row">
-                    <div class="col-7 offset-2">
-                        <p class="mb-1 mt-0 small text-muted">Item</p>
-                    </div>
-                    <div class="col-3 text-end">
-                        <p class="mb-3 mt-0 small text-muted">Subtotal</p>
-                    </div>
-                </div>
-                {% for item in cart_items %}
-                    <div class="row">
-                        <div class="col-2 mb-1">
-                            <a href="{% url 'product_detail' item.product.id %}">
-                                {% if item.product.image %}
-                                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                                {% else %}
-                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
-                                {% endif %}
-                            </a>
-                        </div>
-                        <div class="col-7">
-                            <p class="my-0 lead"><strong>{{ item.product.name }}</strong></p>
-                            {% for v in item.variants_selected %}
-                            <p class="my-0">{{ v.date }} @ {{ v.time }}</p>
-                            {% endfor %}
-                        </div>
-                        <div class="col-3 text-end">
-                            <p class="my-0 small text-muted">€{{ item.subtotal }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-                <hr class="my-0">
-                <div class="row text-grey text-end">
-                    <div class="col-7 offset-2">
-                        <p class="my-0">Grand Total:</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="my-0">€{{ total | floatformat:2 }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6">
-                <p class="text-muted">Please fill out the form to complete your order</p>
-                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-                    {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-5">
-                        <legend class="fieldset-label small text-grey px-2 w-auto">Details</legend>
-                        {{ order_form.full_name | as_crispy_field }}
-                        <br>
-                        {{ order_form.email | as_crispy_field }}
-                        <br>
-                        {{ order_form.phone_number | as_crispy_field }}
-                    </fieldset>
-                    <fieldset class="px-3">
-                        <legend class="fieldset-label small text-grey px-2 w-auto">Payment</legend>
-                        <div class="mb-3" id="card-element"></div>
-                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    </fieldset>
-                    <div class="submit-button text-end mt-5 mb-2">
-                        <a href="{% url 'cart' %}" class="btn btn-grey-outline rounded">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="font-weight-bold">Adjust Bag</span>
-                        </a>
-                        <button id="submit-button" class="btn btn-grey rounded">
-                            <span class="font-weight-bold">Complete Order</span>
-                            <span class="icon">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </button>
-                        <p class="small text-danger my-0">
-                            <span class="icon">
-                                <i class="fas fa-exclamation-circle"></i>
-                            </span>
-                            <span>Your card will be charged <strong>€{{ total | floatformat:2 }}</strong></span>
-                        </p>
-                    </div>
-                </form>
-            </div>
+           {% include 'checkout/components/cart-summary.html' %}
+           {% include 'checkout/components/checkout-form.html' %}
         </div>
     </div>
 {% endblock %}
