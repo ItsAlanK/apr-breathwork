@@ -9,6 +9,7 @@ def view_cart(request):
 def add_to_cart(request, item_id):
     """ Add selected product to the cart """
 
+    product = get_object_or_404(Product, pk=item_id)
     date = request.POST.get('date')
     time = request.POST.get('time')
     variant = date + "/" + time
@@ -20,11 +21,17 @@ def add_to_cart(request, item_id):
     # if not adds new variant/product to cart
     if item_id in list(cart.keys()):
         if variant in cart[item_id]:
-            messages.success(request, "This class is already your cart!")
+            messages.warning(request, f"{product.name} for {date} at {time} is already your cart!")
         else:
             cart[item_id] += [variant]
+            messages.success(
+                request, f"{product.name} for {date} at {time} has been added to your cart!"
+                )
     else:
         cart[item_id] = [variant]
+        messages.success(
+            request, f"{product.name} for {date} at {time} has been added to your cart!"
+            )
 
     request.session['cart'] = cart
     return redirect(redirect_url)
@@ -34,6 +41,7 @@ def remove_from_cart(request, var_id):
 
     cart = request.session.get('cart', {})
     variant = get_object_or_404(ProductVariant, pk=var_id)
+    product_name = variant.product
     # Format date and time to match format in cart
     date = variant.date.strftime('%B %d, %Y')
     time = variant.time.strftime('%H:%M')
@@ -50,11 +58,19 @@ def remove_from_cart(request, var_id):
                     if len(variants) > 1:
                         variants.remove(var_instance)
                         request.session['cart'] = cart
+                        messages.success(
+                            request, f"{product_name} for {date} at {time} removed from your cart!"
+                            )
                         raise StopIteration
                     else:
                         del cart[product]
                         request.session['cart'] = cart
+                        messages.success(
+                            request, f"{product_name} for {date} at {time} removed from your cart!"
+                            )
                         raise StopIteration
     except StopIteration:
         pass
+    except Exception as e:
+        messages.error(request, "Error removing item, please try again.")
     return render(request, 'cart/cart.html')
