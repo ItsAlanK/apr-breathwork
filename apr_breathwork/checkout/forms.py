@@ -1,11 +1,12 @@
 from django import forms
+from .models import Order
 
 
 class OrderForm(forms.ModelForm):
     """ Set model and fields for order form """
     class Meta:
         """ Set model and fields """
-        model = OrderForm
+        model = Order
         fields = (
             "full_name", "email",
             "phone_number",
