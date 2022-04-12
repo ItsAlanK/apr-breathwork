@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Your Shopping Cart</h2>
+                <h2 class="logo-font mb-4">Checkout</h2>
                 <hr>
             </div>
         </div>
@@ -24,4 +24,11 @@
            {% include 'checkout/components/checkout-form.html' %}
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe-elements.js' %}"></script>
 {% endblock %}
