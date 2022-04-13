@@ -26,7 +26,7 @@
                 {% endfor %}
             </div>
             <div class="col-3 text-end">
-                <p class="my-0 small text-muted">€{{ item.subtotal }}</p>
+                <p class="my-0 small text-muted">€ {{ item.subtotal }}</p>
             </div>
         </div>
     {% endfor %}
@@ -36,7 +36,7 @@
             <p class="my-0">Grand Total:</p>
         </div>
         <div class="col-3">
-            <p class="my-0">€{{ total | floatformat:2 }}</p>
+            <p class="my-0">€  {{ total | floatformat:2 }}</p>
         </div>
     </div>
 </div>

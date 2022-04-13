@@ -12,7 +12,7 @@
             </select>
             <br>
             <select id="time" name="time" class="form-select" aria-label="Select a time" required="required">
-                <option value="">Choose a Time (Must Choose Date First)</option>
+                <option value="" selected disabled>Choose a Time (Must Choose Date First)</option>
                 {% for v in variants %}
                     {% if v.places_sold < v.attendance_limit %}
                         <option id="{{ v.date }}" class="d-none">{{ v.time | date:"H:i" }}</option>

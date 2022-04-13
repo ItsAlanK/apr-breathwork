@@ -1,8 +1,8 @@
-var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
-var clientSecret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripePublicKey);
-var elements = stripe.elements();
-var style = {
+const stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
+const clientSecret = $('#id_client_secret').text().slice(1, -1);
+const stripe = Stripe(stripePublicKey);
+const elements = stripe.elements();
+const style = {
     base: {
         color: '#59514D',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
@@ -17,15 +17,15 @@ var style = {
         iconColor: '#EF8275'
     }
 };
-var card = elements.create('card', {style: style});
+const card = elements.create('card', {style: style});
 card.mount('#card-element');
 
 // Error listener
 
 card.addEventListener('change', function (event) {
-    var errorDiv = document.getElementById('card-errors');
+    const errorDiv = document.getElementById('card-errors');
     if (event.error) {
-        var html = `
+        const html = `
         <span class="icon" role="alert">
             <i class="fas fa-times"></i>
         </span>
@@ -39,7 +39,7 @@ card.addEventListener('change', function (event) {
 
 // Form Submit
 
-var form = document.getElementById('payment-form');
+const form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
@@ -53,8 +53,8 @@ form.addEventListener('submit', function(ev) {
         }
     }).then(function(result) {
         if (result.error) {
-            var errorDiv = document.getElementById('card-errors');
-            var html = `
+            const errorDiv = document.getElementById('card-errors');
+            const html = `
                 <span class="icon" role="alert">
                 <i class="fas fa-times"></i>
                 </span>

@@ -23,7 +23,7 @@
             </a>
         </td>
         <td class="py-3">
-            <p class="my-0">${{ item.product.price }}</p>
+            <p class="my-0">€  {{ item.product.price }}</p>
         </td>
         <td class="py-3">
             {% for v in item.variants_selected %}
@@ -43,13 +43,13 @@
             {% endfor %}
         </td>
         <td class="py-3">
-            <p class="my-0">${{ item.subtotal }}</p>
+            <p class="my-0">€  {{ item.subtotal }}</p>
         </td>
     </tr>
     {% endfor %}
     <tr>
         <td colspan="6" class="pt-5 text-end text-grey">
-            <h4 class="mt-4"><strong>Grand Total: €{{ total|floatformat:2 }}</strong></h4>
+            <h4 class="mt-4"><strong>Grand Total: €  {{ total|floatformat:2 }}</strong></h4>
         </td>
     </tr>
     <tr>
