@@ -20,9 +20,7 @@
                 <p>Your order information is below. A confirmation email will be sent to {{ order.email }}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-lg-7"></div>
-        </div>
+        {% include 'checkout/components/order-info-box.html' %}
         <div class="row">
             <div class="col-12 col-lg-7 text-end">
                 <a href="{% url 'products' %}" class="btn btn-grey rounded my-2">
