@@ -68,7 +68,7 @@ def checkout(request):
                         # Set paid member status to user is account_required product is purchased
                         if product.account_required:
                             profile = get_object_or_404(UserProfile, user=request.user)
-                            profile.paid_member_from = datetime.today()
+                            profile.paid_member_from = formatted_date
                             profile.is_paid_member = True
                             profile.save()
 
