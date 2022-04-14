@@ -65,6 +65,14 @@ def checkout(request):
                             product_variant=variant_selected,
                         )
                         order_line_item.save()
+                        # Set paid member status to user is account_required product is purchased
+                        if product.account_required:
+                            profile = get_object_or_404(UserProfile, user=request.user)
+                            profile.paid_member_from = datetime.today()
+                            profile.is_paid_member = True
+                            profile.save()
+                            print(profile.paid_member_from)
+
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your bag wasn't found. "
