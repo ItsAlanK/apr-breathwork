@@ -45,8 +45,14 @@ def product_detail(request, product_id):
     variants = ProductVariant.objects.filter(product=product)
 
     context = {
-        'product': product,
-        'variants': variants,
-    }
+            'product': product,
+            'variants': variants,
+        }
 
-    return render(request, 'products/product_detail.html', context)
+    if product.account_required:
+        if request.user.is_authenticated:
+            return render(request, 'products/product-detail.html', context)
+        else:
+            return render(request, 'products/account-required.html', context)
+    else:
+        return render(request, 'products/product-detail.html', context)
