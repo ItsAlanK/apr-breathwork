@@ -14,7 +14,7 @@
     const timeSelector = document.getElementById("time");
     dateSelector.addEventListener("change", function() {
         chosenDate = dateSelector.options[dateSelector.selectedIndex].value;
-        for (const i=0; i<timeSelector.length; i++) {
+        for (var i=0; i<timeSelector.length; i++) {
             if (timeSelector.options[i].id == chosenDate) {
                 timeSelector.options[i].classList.remove("d-none");
                 timeSelector.selectedIndex = null; 
