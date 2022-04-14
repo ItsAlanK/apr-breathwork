@@ -23,7 +23,7 @@
             <div class="col-12 col-lg-10">
                 <p class="text-muted">Order History</p>
                 <div class="order-history table-responsive">
-                    <table class="table table-sm table-borderless">
+                    <table class="table table-sm">
                         <thead>
                             <tr>
                                 <th>Order Number</th>
@@ -56,8 +56,12 @@
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
                                         <li class="small">
-                                            {% if product_variant.meeting_invite_link %}
-                                                {{ item.product_variant.meeting_invite_link }}
+                                            {% if item.product_variant.meeting_invite_link %}
+                                                <a class="text-decoration-none" target="_blank" href="{{ item.product_variant.meeting_invite_link }}">
+                                                    Click here to join session!
+                                                </a>
+                                            {% else %}
+                                                <p class="small">"No URL found. Please contact us if you did not receive an email link to the session."</p>
                                             {% endif %}
                                         </li>
                                         {% endfor %}
