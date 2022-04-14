@@ -71,7 +71,6 @@ def checkout(request):
                             profile.paid_member_from = datetime.today()
                             profile.is_paid_member = True
                             profile.save()
-                            print(profile.paid_member_from)
 
                 except Product.DoesNotExist:
                     messages.error(request, (

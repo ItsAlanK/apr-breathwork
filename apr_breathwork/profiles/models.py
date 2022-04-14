@@ -41,8 +41,6 @@ def check_is_paid_status(sender, user, request, **kwargs):
         current_date = datetime.date.today()
         difference = (current_date - user_profile.paid_member_from).days
         if difference > 42:
-            print(difference)
+            user_profile.is_paid_member = False
+            user_profile.save()
             print('Expired')
-        else:
-            print(difference)
-            print('still member')
