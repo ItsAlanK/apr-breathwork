@@ -1,11 +1,11 @@
 from datetime import datetime
+import json
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from cart.contexts import cart_contents
 import stripe
-import json
 from products.models import Product, ProductVariant
 from profiles.models import UserProfile
 from .forms import Order, OrderForm
