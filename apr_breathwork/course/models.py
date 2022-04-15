@@ -1,7 +1,5 @@
 from django.db import models
 from products.models import Product, ProductVariant
-from django.db.models.signals import pre_save
-from django.dispatch import receiver
 
 
 class Urls(models.Model):
@@ -29,11 +27,3 @@ class CourseInfo(models.Model):
     def __str__(self):
         date = self.variant.date.strftime('%B %d, %Y')
         return self.course.name + " " + date
-
-@receiver(pre_save, sender=Product)
-def my_handler(sender, **kwargs):
-    if sender.pk is None:  # create
-        sender.model = CourseInfo.objects.create(
-            course = sender,
-            variant = ProductVariant.objects.get(product=sender)
-        )
