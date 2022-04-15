@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from checkout.models import Order
+from course.models import CourseInfo
 from .models import UserProfile
 from django.contrib import messages
 
@@ -11,6 +12,7 @@ def profile(request):
 
     course_name = ''
     membership_from = ''
+    course_id = 0
 
     orders = profile.orders.all()
     if profile.is_paid_member:
@@ -19,6 +21,8 @@ def profile(request):
             for item in items:
                 if item.product.account_required:
                     course_name = item.product.name
+                    course = CourseInfo.objects.get(course=item.product)
+                    course_id = course.pk
                     membership_from = item.product_variant.date
 
     template = 'profiles/profile.html'
@@ -27,6 +31,7 @@ def profile(request):
         'orders': orders,
         'course_name': course_name,
         'membership_from': membership_from,
+        'course_id': course_id,
     }
 
 

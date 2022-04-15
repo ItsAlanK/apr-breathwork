@@ -9,10 +9,16 @@ class Urls(models.Model):
         """ Adjust plural of model name in admin """
         verbose_name_plural = 'URLs'
 
-    course = models.ForeignKey('CourseInfo', on_delete=models.CASCADE)
-    class_no = models.IntegerField()
+    course = models.ForeignKey(
+        'CourseInfo',
+        on_delete=models.CASCADE,
+        related_name='course_week'
+        )
+    class_no = models.IntegerField(default=0)
     url = models.URLField()
 
+    def __str__(self):
+        return "Week " + str(self.class_no)
 
 class CourseInfo(models.Model):
     """ Model for course info """
