@@ -26,6 +26,13 @@ def profile(request):
                     course_id += [course.pk]
                     membership_from += [item.product_variant.date]
 
+    # If user somehow gets is_paid_member set to true without
+    # buying a course this resets to false to stop empty
+    # course membership section in template.
+    if len(course_id) < 1:
+        profile.is_paid_member=False
+        profile.save()
+
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
