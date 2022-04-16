@@ -1,0 +1,12 @@
+{% if request.get_full_path == '/products/add' %}
+<form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
+{% elif request.get_full_path == '/products/add/variant' %}
+<form method="POST" action="{% url 'add_product' 'variant' %}" class="form mb-2">
+{% endif %}
+    {% csrf_token %}
+    {{ form | crispy }}
+    <div class="text-end">
+        <a href="{% url 'products' %}" class="btn btn-grey-outline rounded">Cancel</a>
+        <input class="btn btn-grey rounded" type="submit"></input>
+    </div>
+</form>

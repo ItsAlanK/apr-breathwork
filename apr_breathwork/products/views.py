@@ -59,19 +59,41 @@ def product_detail(request, product_id):
         return render(request, 'products/product-detail.html', context)
 
 
-def add_product(request):
+def add_product(request, variant=None):
     """ Add a product to the store """
 
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully added Product!')
-            return redirect(reverse('add_product'))
+    if variant:
+        if request.method == 'POST':
+            form = ProductVariantForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Successfully added Product Variant!')
+                return redirect(reverse('add_product'))
+            else:
+                messages.error(request,
+                    'Failed to add product variant. Please check form details.'
+                )
+                print('hello')
         else:
-            messages.error(request, 'Failed to add product. Please check form details.')
+            variant_form = ProductVariantForm()
+
+        template = 'products/add-product.html'
+        context = {
+            'form': variant_form,
+        }
+
+        return render(request, template, context)
     else:
-        form = ProductForm()
+        if request.method == 'POST':
+            form = ProductForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Successfully added Product!')
+                return redirect(reverse('add_product'))
+            else:
+                messages.error(request, 'Failed to add product. Please check form details.')
+        else:
+            form = ProductForm()
 
     template = 'products/add-product.html'
     context = {
