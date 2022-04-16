@@ -179,3 +179,12 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def delete_variant(request, variant_id):
+    """ Delete a product """
+
+    variant = get_object_or_404(ProductVariant, pk=variant_id)
+    variant.delete()
+    messages.success(request, 'Product variant deleted!')
+    return redirect(reverse('product_detail', args=[variant.product.id]))
