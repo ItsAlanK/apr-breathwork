@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from checkout.models import Order
 from course.models import CourseInfo
 from .models import UserProfile
-from django.contrib import messages
-
 
 
 def profile(request):
@@ -13,34 +12,36 @@ def profile(request):
     course_name = []
     membership_from = []
     course_id = []
-    mylist = zip(course_name, membership_from, course_id)
+    course_details = zip(course_name, membership_from, course_id)
+    course_ready = True
 
     orders = profile.orders.all()
-    if profile.is_paid_member:
-        for order in orders:
-            items = order.lineitems.all()
-            for item in items:
-                if item.product.account_required:
-                    course_name += [item.product.name]
-                    course = CourseInfo.objects.get(course=item.product)
-                    course_id += [course.pk]
-                    membership_from += [item.product_variant.date]
+    try:
+        if profile.is_paid_member:
+            for order in orders:
+                items = order.lineitems.all()
+                for item in items:
+                    if item.product.account_required:
+                        course_name += [item.product.name]
+                        course = CourseInfo.objects.get(course=item.product)
+                        course_id += [course.pk]
+                        membership_from += [item.product_variant.date]
+    except:
+        course_ready = False
 
     # If user somehow gets is_paid_member set to true without
     # buying a course this resets to false to stop empty
     # course membership section in template.
-    if len(course_id) < 1:
-        profile.is_paid_member=False
-        profile.save()
+    # if len(course_id) < 1:
+    #     profile.is_paid_member=False
+    #     profile.save()
 
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
         'orders': orders,
-        'course_name': course_name,
-        'membership_from': membership_from,
-        'course_id': course_id,
-        'mylist': mylist,
+        'course_details': course_details,
+        'course_ready': course_ready,
     }
 
 

@@ -18,14 +18,21 @@
               <div class="ms-2 me-auto">
                 <div class="fw-bold">Course Membership:</div>
                     {% if profile.is_paid_member %}
-                        {% for course_name, membership_from, course_id in mylist %}
-                        You are enrolled in {{ course_name }} from {{ membership_from }}
-                        <p>
-                            <a class="text-decoration-none" href="{% url 'course_page' course_id %}">
-                                Click here to view previous classes!
-                            </a>
-                        </p>
-                        {% endfor %}
+                        {% if course_ready %}
+                            {% for course_name, membership_from, course_id in course_details %}
+                            You are enrolled in {{ course_name }} from {{ membership_from }}
+                            <p>
+                                <a class="text-decoration-none" href="{% url 'course_page' course_id %}">
+                                    Click here to view previous classes!
+                                </a>
+                            </p>
+                            {% endfor %}
+                        {% else %}
+                            <p>
+                                Your course content has not been added yet.
+                                Return here to review classes when they are ready.
+                            </p>
+                        {% endif %}
                     {% else %}
                         You are not enrolled in any courses.
                         <p>
