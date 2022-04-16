@@ -26,6 +26,7 @@ class ProductVariantForm(forms.ModelForm):
         """ Set fields for variant form """
         model = ProductVariant
         fields = '__all__'
+
         widgets = {
             'date': forms.DateInput(
                 format=('%Y-%m-%d'),
