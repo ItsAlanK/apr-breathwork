@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'home',
+    'apr_breathwork.home',
     'products',
     'cart',
     'checkout',
