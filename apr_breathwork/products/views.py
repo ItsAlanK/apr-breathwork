@@ -64,6 +64,10 @@ def product_detail(request, product_id):
 def add_product(request, variant=None):
     """ Add a product or variant to the store """
 
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only staff members can do that.')
+        return redirect(reverse('home'))
+
     if variant:
         if request.method == 'POST':
             form = ProductVariantForm(request.POST)
@@ -108,6 +112,10 @@ def add_product(request, variant=None):
 def edit_product(request, product_id):
     """ Edit a product """
 
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only staff members can do that.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -131,6 +139,10 @@ def edit_product(request, product_id):
 
 def edit_product_variant(request, product_id, variant_id=None):
     """ Edit a variant """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only staff members can do that.')
+        return redirect(reverse('home'))
 
     if variant_id:
         product = get_object_or_404(Product, pk=product_id)
@@ -179,6 +191,10 @@ def edit_product_variant(request, product_id, variant_id=None):
 def delete_product(request, product_id):
     """ Delete a product """
 
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only staff members can do that.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
@@ -188,6 +204,10 @@ def delete_product(request, product_id):
 @login_required
 def delete_variant(request, variant_id):
     """ Delete a product """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only staff members can do that.')
+        return redirect(reverse('home'))
 
     variant = get_object_or_404(ProductVariant, pk=variant_id)
     variant.delete()
