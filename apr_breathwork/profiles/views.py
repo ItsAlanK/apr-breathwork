@@ -13,15 +13,20 @@ def profile(request):
     membership_from = []
     course_id = []
     course_details = zip(course_name, membership_from, course_id)
+    course_exists = False
     course_ready = True
 
     orders = profile.orders.all()
     try:
         if profile.is_paid_member:
+            # for each order in users order history
             for order in orders:
                 items = order.lineitems.all()
+                # for each line item in each order
                 for item in items:
+                    # if line item is a course (acc required)
                     if item.product.account_required:
+                        course_exists = True
                         course_name += [item.product.name]
                         course = CourseInfo.objects.get(course=item.product)
                         course_id += [course.pk]
@@ -32,9 +37,9 @@ def profile(request):
     # If user somehow gets is_paid_member set to true without
     # buying a course this resets to false to stop empty
     # course membership section in template.
-    # if len(course_id) < 1:
-    #     profile.is_paid_member=False
-    #     profile.save()
+    if not course_exists:
+        profile.is_paid_member=False
+        profile.save()
 
     template = 'profiles/profile.html'
     context = {
