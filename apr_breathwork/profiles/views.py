@@ -10,9 +10,10 @@ def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
 
-    course_name = ''
-    membership_from = ''
-    course_id = 0
+    course_name = []
+    membership_from = []
+    course_id = []
+    mylist = zip(course_name, membership_from, course_id)
 
     orders = profile.orders.all()
     if profile.is_paid_member:
@@ -20,10 +21,10 @@ def profile(request):
             items = order.lineitems.all()
             for item in items:
                 if item.product.account_required:
-                    course_name = item.product.name
+                    course_name += [item.product.name]
                     course = CourseInfo.objects.get(course=item.product)
-                    course_id = course.pk
-                    membership_from = item.product_variant.date
+                    course_id += [course.pk]
+                    membership_from += [item.product_variant.date]
 
     template = 'profiles/profile.html'
     context = {
@@ -32,6 +33,7 @@ def profile(request):
         'course_name': course_name,
         'membership_from': membership_from,
         'course_id': course_id,
+        'mylist': mylist,
     }
 
 
