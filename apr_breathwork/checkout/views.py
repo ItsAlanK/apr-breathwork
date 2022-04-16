@@ -65,6 +65,8 @@ def checkout(request):
                             product_variant=variant_selected,
                         )
                         order_line_item.save()
+                        variant_selected.places_sold = variant_selected.places_sold + 1
+                        variant_selected.save()
                         # Set paid member status to user is account_required product is purchased
                         if product.account_required:
                             profile = get_object_or_404(UserProfile, user=request.user)
