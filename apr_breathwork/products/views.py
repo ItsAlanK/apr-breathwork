@@ -66,14 +66,13 @@ def add_product(request, variant=None):
         if request.method == 'POST':
             form = ProductVariantForm(request.POST)
             if form.is_valid():
-                form.save()
+                variant = form.save()
                 messages.success(request, 'Successfully added Product Variant!')
-                return redirect(reverse('add_product'))
+                return redirect(reverse('product_detail', args=[variant.product.id]))
             else:
                 messages.error(request,
                     'Failed to add product variant. Please check form details.'
                 )
-                print('hello')
         else:
             variant_form = ProductVariantForm()
 
@@ -89,7 +88,7 @@ def add_product(request, variant=None):
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Successfully added Product!')
-                return redirect(reverse('add_product'))
+                return redirect(reverse('add_product', args=['variant']))
             else:
                 messages.error(request, 'Failed to add product. Please check form details.')
         else:
@@ -171,3 +170,12 @@ def edit_product_variant(request, product_id, variant_id=None):
         }
 
         return render(request, template, context)
+
+
+def delete_product(request, product_id):
+    """ Delete a product """
+
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted!')
+    return redirect(reverse('products'))
