@@ -27,7 +27,7 @@ class CourseInfo(models.Model):
         """ Adjust plural of model name in admin """
         verbose_name_plural = 'Course Info'
 
-    course = models.OneToOneField(Product, on_delete=models.CASCADE)
+    course = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='course')
     variant = models.ForeignKey(ProductVariant, on_delete=models.CASCADE)
 
     def __str__(self):
