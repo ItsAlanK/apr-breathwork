@@ -192,7 +192,6 @@ Main colors chosen for site (Yellow and Brown/Grey) were chosen to match current
 
 ### Heroku Deployment ###
 
-Struggles
 
 
 <a name="technologies"></a>
