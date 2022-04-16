@@ -1,1 +1,1 @@
-web: gunicorn apr_breathwork.wsgi:application
+web: gunicorn apr_breathwork/apr_breathwork.wsgi:application
