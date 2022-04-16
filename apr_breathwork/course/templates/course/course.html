@@ -24,3 +24,12 @@
         </div>
     </div>
 {% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+    <script type="text/javascript">
+        if ($(window).width() < 992) {
+            $('.myiframe').css('width', $('#video-list').width()+'px');
+        }
+    </script>
+{% endblock %}

@@ -2,11 +2,11 @@
     <div class="course-list">
         <ul class="list-group">
             {% for class in classes %}
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
+                <li id="video-list"  class="list-group-item d-flex">
+                <div class="mx-auto">
                     <div class="fw-bold">{{ class }}</div>
-                    <div class="videowrapper">
-                        <iframe width="560" height="315"
+                    <div class="video-wrapper">
+                        <iframe width="560" class="myiframe" height="315"
                         src="{{ class.url }}"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
