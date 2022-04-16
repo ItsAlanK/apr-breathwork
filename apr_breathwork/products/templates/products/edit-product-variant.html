@@ -18,34 +18,9 @@
         </div>
         <div class="row">
             {% if request.get_full_path == base_url %}
-            <form class="form" action="{% url 'edit_product_variant' product.id %}" method="POST">
-            {% csrf_token %}
-                <div class="col-12 col-md-6">
-                    <div class="form-row">
-                        <div class="col-12">
-                            <select id ="variant" name="variant" class="form-select" aria-label="Select a variant" required="required">
-                                <option value="">Choose a Class to Edit</option>
-                                {% for v in variants %}
-                                    <option value="{{ v.id }}">{{ v }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <input type="submit" class="btn btn-grey rounded text-uppercase mt-5" value="Edit this Class">
-                        </div>
-                    </div>
-                </div>
-            </form>
+                {% include 'products/components/variant-edit-select.html' %}
             {% else %}
-                <form method="POST" action="" class="form mb-2" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="text-end mt-3">
-                        <a href="{% url 'delete_variant' variant.id %}" class="text-danger delete-confirm">Delete Variant</a>
-                        <a href="{% url 'products' %}" class="btn btn-grey-outline rounded">Cancel</a>
-                        <input class="btn btn-grey rounded" type="submit" value="Update"></input>
-                    </div>
-                </form>
+                {% include 'products/components/edit-delete-variant-form.html' %}
             {% endif %}
         </div>
     </div>

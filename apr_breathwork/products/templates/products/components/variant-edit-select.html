@@ -1,0 +1,18 @@
+<form class="form" action="{% url 'edit_product_variant' product.id %}" method="POST">
+    {% csrf_token %}
+    <div class="col-12 col-md-6">
+        <div class="form-row">
+            <div class="col-12">
+                <select id ="variant" name="variant" class="form-select" aria-label="Select a variant" required="required">
+                    <option value="">Choose a Class to Edit</option>
+                    {% for v in variants %}
+                        <option value="{{ v.id }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-12">
+                <input type="submit" class="btn btn-grey rounded text-uppercase mt-5" value="Edit this Class">
+            </div>
+        </div>
+    </div>
+</form>
