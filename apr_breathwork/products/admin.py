@@ -10,8 +10,28 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
+class ProductVariantAdminInline(admin.TabularInline):
+    """ Set OrderLineItem admin to be visible from Order Admin """
+
+    model = ProductVariant
+
+    list_display = (
+        'product',
+        'date',
+        'time',
+        'attendance_limit',
+        'places_sold'
+    )
+
+    readonly_fields=('places_sold',)
+    ordering = ('date', 'time')
+
+
 class ProductAdmin(admin.ModelAdmin):
     """ Set list display items for products in admin """
+
+    inlines = (ProductVariantAdminInline,)
+
     list_display = (
         'name',
         'category',
