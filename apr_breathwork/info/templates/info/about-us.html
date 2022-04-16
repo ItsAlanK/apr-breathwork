@@ -9,15 +9,20 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-10">
-                <h1 class="logo-font display-3">
-                    About Us
-                </h1>
-                <p class="">
-                    We are all very different. We were born in different cities, at different times, we love different music, food, movies. But we have something that unites us all. It is our company. We are its heart. We are not just a team, we are a family.
-                </p>
-                <div class="mbr-section-btn align-center"><a class="btn btn-md btn-black-outline display-4" href="index.html#form1-4">
-                        CONTACT US</a></div>
+            <div class="col-12">
+                {% if about_us.image %}
+                    <div class="image-container my-5 mx-auto col-10 col-md-8">
+                        <img class="card-img-top img-fluid" src="{{ about_us.image.url }}" alt="{{ product.name }}">
+                    </div>
+                {% endif %}
+                <div class="col-10 col-md-8 mx-auto">
+                    <h1 class="logo-font display-3">
+                        About Us
+                    </h1>
+                    <p class="">
+                        {{ about_us.content | safe }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
