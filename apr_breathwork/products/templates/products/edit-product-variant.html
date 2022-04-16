@@ -41,7 +41,7 @@
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="text-end mt-3">
-                        <a href="{% url 'delete_variant' variant.id %}" class="text-danger">Delete Variant</a>
+                        <a href="{% url 'delete_variant' variant.id %}" class="text-danger delete-confirm">Delete Variant</a>
                         <a href="{% url 'products' %}" class="btn btn-grey-outline rounded">Cancel</a>
                         <input class="btn btn-grey rounded" type="submit" value="Update"></input>
                     </div>
@@ -49,4 +49,9 @@
             {% endif %}
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'js/confirm-delete.js' %}"></script>
 {% endblock %}
