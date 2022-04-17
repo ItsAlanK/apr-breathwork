@@ -12,7 +12,7 @@ The platform will also allow admins of the site to add edit and delete products 
 
 This project will use the Django framework for a MVC based application using Postgres databases to manage information.
 
-[**Link to Live Site**]()
+[**Link to Live Site**](https://apr-breathwork.herokuapp.com/)
 
 ## Table of contents 
 
@@ -26,8 +26,8 @@ This project will use the Django framework for a MVC based application using Pos
 - [Features](#features)
     - [Existing Features](#existing-features)
     - [Potential Future Feature](#future-features)
+- [Marketing](#marketing)
 - [Testing](#testing)
-
 - [Deployment](#deployment)
     - [Local Deployment](#local-deployment)
     - [Heroku Deployment](#heroku)
@@ -163,6 +163,21 @@ Main colors chosen for site (Yellow and Brown/Grey) were chosen to match current
 
 ### Potential Future Features ###
 
+
+## Marketing ##
+<a name="marketing"></a>
+
+I created a mockup of a potential Facebook page to be used in tandem with an Instagram account with similar content to be used to promote the business.
+
+The welness industry and especially holistics is very popular on social media channels and is most likely the place where most potential customers will discover the business.
+
+With its ability to inform and promote to customers constantly along with the opporunity to engage with followers on a 1 to 1 or 1 to many basis it is a powerful marketing tool.
+
+![Mockup Facebook Page](docs/design/facebook-mockup.png)
+
+The posts can be used to both directly promote the store by linking to the products page or a specific product.
+
+They can also be used to provide value to followers by teaching and offering free tasters of what would be learned by purchasing the classes.
 
 <a name="testing"></a>
 
