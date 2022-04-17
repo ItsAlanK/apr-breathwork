@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 
@@ -8,7 +9,7 @@ class AboutUs(models.Model):
         """ Adjust plural of model name in admin """
         verbose_name_plural = 'About Us'
 
-    content = models.TextField(blank=False, null="False", default="About us details")
+    content = RichTextField(default="About us details")
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
