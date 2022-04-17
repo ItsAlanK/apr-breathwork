@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-1gt(#(pb*@w901^^1i3p5&hao%w*(a7c7ucte0tu9$1cv3g&v_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 1
 
-ALLOWED_HOSTS = ['apr-breathwork.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['apr-breathwork.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
