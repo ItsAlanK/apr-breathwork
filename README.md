@@ -218,13 +218,22 @@ They can also be used to provide value to followers by teaching and offering fre
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Python](https://www.python.org/)
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ### Libraries and Frameworks ###
 
+- [Django](https://www.djangoproject.com/)
 - [Bootstrap](https://getbootstrap.com/)
+- [JQuery](https://jquery.com/)
 - [Font Awesome](https://fontawesome.com/)
+- [CKEditor](https://pypi.org/project/django-ckeditor-updated/)
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
 
 ### Other ###
+- [Stripe](https://stripe.com/) for payment processing
+- [Amazon AWS](https://aws.amazon.com/) for storage
+- [Heroku](https://dashboard.heroku.com/) for server hosting
+- [PostgreSQL](https://www.postgresql.org/) for database
 
 
 <a name="credits"></a>
