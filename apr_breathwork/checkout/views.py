@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
 from cart.contexts import cart_contents
 import stripe
 from products.models import Product, ProductVariant
@@ -121,7 +122,6 @@ def checkout(request):
 def checkout_success(request, order_number):
     """ Render page for successful checkouts. """
 
-    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
@@ -132,6 +132,25 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully created! \
         Your Order number is {order_number}. A confirmation email \
         will be sent to {order.email}.')
+
+
+    # Confirmation Email
+
+    email_subject = 'APR Breathwork Order Confirmation'
+    email_body = (f'Hi there! Thanks for your Booking. Your order number is {order_number}.\n'
+        'Looking forward to seeing you. You can join the session '
+        f'by following the link at the given time. \n')
+
+    line_items = OrderLineItem.objects.filter(order=order)
+    for item in line_items:
+        email_body += f'{item.product_variant} - {item.product_variant.meeting_invite_link}\n'
+    email_body += '\n Aoife PR'
+    email_sender = settings.DEFAULT_FROM_EMAIL
+    email_recipient = order.email
+
+    send_mail(email_subject,
+    email_body, email_sender,
+    [email_recipient], fail_silently=False)
 
     if 'cart' in request.session:
         del request.session['cart']
