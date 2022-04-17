@@ -1,1 +1,1 @@
-web: gunicorn --chdir apr_breathwork.apr_breathwork.wsgi:application
+web: gunicorn --chdir apr_breathwork apr_breathwork.wsgi:application
