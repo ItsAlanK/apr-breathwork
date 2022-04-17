@@ -230,7 +230,7 @@ if 'DEVELOPMENT' in os.environ:
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
-    EMAIL_POST = 587
+    EMAIL_PORT = 587
     EMAIL_HOST = 'smpt.gmail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASS = os.environ.get('EMAIL_HOST_PASS')
