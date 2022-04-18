@@ -278,14 +278,87 @@ Tests were created for views models and forms for each app to confirm pages are 
 ## Deployment ##
 
 
+This project is deployed to [Heroku](https://www.heroku.com/) which is where it is available to view publicly in a [Live Environment](https://apr-breathwork.herokuapp.com/). The project was developed with Github serving as host for my Git respository. This project can be deployed locally using and IDE or remote to a hosting platform such as Heroku.
+
+For this project to work you will need an account on [Amazon AWS](https://aws.amazon.com/) with an [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html) set up in order to store static files and uploaded media files.
+
+Your will also need to set up a [Stripe account](https://dashboard.stripe.com/) for free and use it to get your Stripe Puclic and Secret keys which are needed to processes payments.
+
 <a name="local-deployment"></a>
 
 ### Local Deployment ###
+
+These are the steps needed in order to deploy this project locally through an IDE such as gitpod:
+
+1. Clone the project. Navigate to the repository, above the window housing all of the application's files there is a code button which drops down into a clone window providing a link to clone the project. In your IDE terminal type the following using the link provided.
+    ```
+    git clone https://github.com/ItsAlanK/apr-breathwork.git
+    ```
+2. Install the modules required for the application to run using the ```requirements.txt``` file. You can do this with the following command in your terminal.
+    ```
+    pip3 install -r requirements.txt
+    ```
+3. Create a file in your project root directory called ```env.py``` to store environment variables. These variables are referenced in ```settings.py``` and are used to set security keys and other sensitive information that should not be hardcoded into the project.
+    ```
+    DATABASE_URL = 'YOUR DB URL'
+    STRIPE_PUBLIC_KEY = 'YOUR STRIPE PUBLIC KEY'
+    STRIPE_SECRET_KEY = 'YOUR STRIPE SECRET KEY'
+    SECRET_KEY = 'YOUR DJANGO SECRET KEY'
+    DEVELOPMENT = 1
+    ```
+    Ensure you add this env.py file to your .gitignore file if you are pushing the project to a live repository to prevent leaking information. If you fail to do this, deactivate and change any keys stored in the file immediately.
+
+    Your ```DATABASE_URL``` variable is not needed if you only intend to run on a local machine as the project uses a local database when debug is on however in a live environment this will be required. _(More on this in the live deployment)_
+4.  Migrate the database models with the following terminal command
+
+    ```
+    python3 manage.py migrate
+    ```
+5. Create a superuser in order to access admin for site with the following command
+    ```
+    python3 manage.py createsuperuser
+    ```
+    And set up a username and password
+6. Run the project with the following command:
+    ```
+    python manage.py runserver
+    ```
+    The terminal will provide you with the link to the server opened with this command.
+7. To access the admin dashboard, add ```/admin``` to the end of the URL and user your superuser login details.
 
 
 <a name="heroku"></a>
 
 ### Heroku Deployment ###
+
+To deploy this project to Heroku to be used remotely:
+
+1.  Create an account with [Heroku](https://www.herokuapp.com/) if needed. Create a new project and give it a name. 
+2. Navigate to the resources page for your project and in the Addons search bar, search for **Heroku Postgres.** And select the free plan.
+3. Navigate now to the settings page and click **reveal config vars.** Here we will set up most of the same variables from the `env.py` file. Copy over all of those same variables set in the local development section **EXCEPT:**
+    - `DEVELOPMENT` which should not be on in the live enviroment so leaving it absent causes a Falsey result when checked for in settings.py.
+    - Here is a full list of config vars required on Heroku
+        ![](docs/config-vars.png)
+        - Note AWS access and secret access keys also needed as when not in development mode all static and media files are sent to AWS. You will also need to change the `AWS_STORAGE_BUCKET_NAME` in settings.py to your own bucket name.
+        - `STRIPE_WH_SECRET` is not required at present as webhooks feature not complete
+        - EMAIL variables are dependant on the email host you choose. Some email settings found in settings.py also must be changed to reflect your own hosts requirements.
+    - `DATABASE_URL` which has been populated with the Heroku Postgres db URL already. This is what you can place in the env.py file now for the same variable. **Note** the project will still use a development server while `DEVELOPMENT` is active so in order to migrate models to the Heroku db you first will have to:
+        - set `DEVELOPMENT = 0` in env.py. Then you can use the below command again and models will be sent to the live db.
+        ````
+        python3 manage.py migrate
+        ````
+
+        - Create another superuser for the live db by using the following command and setting login details.
+        ```
+        python3 manage.py createsuperuser
+        ````
+        - After this is done you can change DEVELOP back to 1 in env.py to turn debug back on and work off the local db. These steps will have to be repeated (except creating superuser) each time you make changes to your model to push them to the live db.
+4.  Add your Heroku app URL to ALLOWED_HOSTS in your settings.py file
+5.  Back in your Heroku settings, below config vars in the add buildpacks section you must add the "Python" buildpack.
+6.  In your IDE confirm requirements.txt is up to date you using `pip freeze > requirements.txt` in the teminal.
+7.  Push all changes to your github repository
+8.  Back in Heroku navigate to the deploy page and link your GitHub account.
+9.  Select the branch of your project to deploy click deploy branch Your project will deploy in a few moments and you will have a button to open your app.
 
 
 
