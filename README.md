@@ -252,8 +252,22 @@ They can also be used to provide value to followers by teaching and offering fre
 
 ### Manual Testing ###
 
+Testing carried out by friends and family as well as myself
+- Responsiveness
+    - Site has been tested on a variety of devices both desktop and mobile to ensure all pages are responsive. No elements spill out of their boundaries or off screen. CKEditor proved particularly stubborn in getting it to conform to its parent elements. Still eeds some work to stay in bounding box.
+- Navigation
+    - Navigation for the site is simple and straightforward. All buttons and links provide feedback to the user and link to the correct pages. All post titles and usernames link to their correspoonding pages as is expected by users.
+- Accessibility
+    - All colours for elements have been selected and tuned to ensure that sufficient contrast is seen throughout the site. Therefore all icons, text, elements on the site should be easily seen and read. All actions on site provide feedback through Django messages to ensure user is aware of any actions they take.
+- Security
+    - Options to edit and delete data are only displayed to staff members, ie If a user is not staff they do not see the edit/delete options. If a user manually navigates to a url they should not have access to checks are in all necessary views to authenticate user before loading the page. User is information of why they don't have access
+
 
 ### Automated Testing ###
+
+Unit tests created for some apps. Need to be completed for cart and checkout apps still.
+
+Tests were created for views models and forms for each app to confirm pages are giving a correct response using the correct templates and funcationality is as intended.
 
 
 ### Bugs ###
