@@ -22,10 +22,13 @@ def cart_contents(request):
 
         for variant in variants:
             split_variant = variant.rsplit("/")
-            date, time = split_variant[0],split_variant[1]
+            date, time = split_variant[0], split_variant[1]
             formatted_date = datetime.strptime(date, '%B %d, %Y')
             formatted_time = datetime.strptime(time, '%H:%M')
-            variant_selected = get_object_or_404(ProductVariant, product=product, date=formatted_date, time=formatted_time)
+            variant_selected = get_object_or_404(
+                ProductVariant, product=product,
+                date=formatted_date, time=formatted_time
+                )
             dates += [date]
             times += [time]
             variants_selected += [variant_selected]

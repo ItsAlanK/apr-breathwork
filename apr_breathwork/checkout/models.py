@@ -17,7 +17,9 @@ class Order(models.Model):
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    total = models.DecimalField(
+        max_digits=10, decimal_places=2,
+        null=False, default=0)
 
     def _create_order_number(self):
         """ Create random order number """
@@ -27,7 +29,9 @@ class Order(models.Model):
     def update_total(self):
         """ Set total value for order, summing lineitem values """
 
-        self.total = self.lineitems.aggregate(Sum('line_item_total'))['line_item_total__sum'] or 0
+        self.total = self.lineitems.aggregate(
+            Sum('line_item_total')
+            )['line_item_total__sum'] or 0
         if not self.total:
             self.total = 0
         self.save()
@@ -69,4 +73,5 @@ class OrderLineItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'Product {self.product.name} on order {self.order.order_number}'
+        return f'Product {self.product.name}'
+        f'on order {self.order.order_number}'

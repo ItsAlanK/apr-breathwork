@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from products.models import ProductVariant, Product
 
+
 def view_cart(request):
     """ View which returns cart contents page """
     return render(request, 'cart/cart.html')
+
 
 def add_to_cart(request, item_id):
     """ Add selected product to the cart """
@@ -21,20 +23,27 @@ def add_to_cart(request, item_id):
     # if not adds new variant/product to cart
     if item_id in list(cart.keys()):
         if variant in cart[item_id]:
-            messages.warning(request, f"{product.name} for {date} at {time} is already your cart!")
+            messages.warning(
+                request,
+                f"{product.name} for {date} at {time} is already your cart!"
+                )
         else:
             cart[item_id] += [variant]
             messages.success(
-                request, f"{product.name} for {date} at {time} has been added to your cart!"
+                request,
+                f"{product.name} for {date} at {time} "
+                "has been added to your cart!"
                 )
     else:
         cart[item_id] = [variant]
         messages.success(
-            request, f"{product.name} for {date} at {time} has been added to your cart!"
+            request,
+            f"{product.name} for {date} at {time} has been added to your cart!"
             )
 
     request.session['cart'] = cart
     return redirect(redirect_url)
+
 
 def remove_from_cart(request, var_id):
     """ Remove chosen item & variant from cart """
@@ -59,14 +68,18 @@ def remove_from_cart(request, var_id):
                         variants.remove(var_instance)
                         request.session['cart'] = cart
                         messages.success(
-                            request, f"{product_name} for {date} at {time} removed from your cart!"
+                            request,
+                            f"{product_name} for {date} at {time} "
+                            "removed from your cart!"
                             )
                         raise StopIteration
                     else:
                         del cart[product]
                         request.session['cart'] = cart
                         messages.success(
-                            request, f"{product_name} for {date} at {time} removed from your cart!"
+                            request,
+                            f"{product_name} for {date} at {time} "
+                            "removed from your cart!"
                             )
                         raise StopIteration
     except StopIteration:

@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect,reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -54,11 +54,12 @@ def checkout(request):
 
                     for variant in variants:
                         split_variant = variant.rsplit("/")
-                        date, time = split_variant[0],split_variant[1]
+                        date, time = split_variant[0], split_variant[1]
                         formatted_date = datetime.strptime(date, '%B %d, %Y')
                         formatted_time = datetime.strptime(time, '%H:%M')
                         variant_selected = get_object_or_404(
-                            ProductVariant, date=formatted_date, time=formatted_time
+                            ProductVariant, date=formatted_date,
+                            time=formatted_time
                             )
                         order_line_item = OrderLineItem(
                             order=order,
@@ -66,11 +67,14 @@ def checkout(request):
                             product_variant=variant_selected,
                         )
                         order_line_item.save()
-                        variant_selected.places_sold = variant_selected.places_sold + 1
+                        places = variant_selected.places_sold
+                        places = places + 1
                         variant_selected.save()
-                        # Set paid member status to user is account_required product is purchased
+                        # Set paid member status to user is
+                        # account_required product is purchased
                         if product.account_required:
-                            profile = get_object_or_404(UserProfile, user=request.user)
+                            profile = get_object_or_404(
+                                UserProfile, user=request.user)
                             profile.paid_member_from = formatted_date
                             profile.is_paid_member = True
                             profile.save()
@@ -82,11 +86,12 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('cart'))
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was a problem with your form. '
-                'Please confirm your details are correct.'
-            )
+                    'Please confirm your details are correct.'
+                    )
     else:
         cart = request.session.get('cart', {})
         if not cart:
@@ -143,14 +148,15 @@ def checkout_success(request, order_number):
 
     line_items = OrderLineItem.objects.filter(order=order)
     for item in line_items:
-        email_body += f'{item.product_variant} - {item.product_variant.meeting_invite_link}\n'
+        email_body += (f'{item.product_variant} - '
+            f'{item.product_variant.meeting_invite_link}\n')
     email_body += '\n Aoife PR'
     email_sender = settings.DEFAULT_FROM_EMAIL
     email_recipient = order.email
 
     send_mail(email_subject,
-    email_body, email_sender,
-    [email_recipient], fail_silently=False)
+        email_body, email_sender,
+        [email_recipient], fail_silently=False)
 
     if 'cart' in request.session:
         del request.session['cart']
