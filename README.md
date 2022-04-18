@@ -309,6 +309,14 @@ Tests were created for views models and forms for each app to confirm pages are 
 
 ### Bugs ###
 
+During development the project was managed through GitHub's issues and projects features. Apps were created in their own branches and then merged to main.(Branches have not been deleted for marking purposes and will be removed afterwards as they are stale) Bugs were logged in the GitHub issues, some notable additional additional bugs were:
+
+- Selecting date and time on product detail page is not manditory resulting in error if product is added to cart without time/date selected. Fixed by making fields mandatory.
+- `IntegrityError at /admin/checkout/order/3/delete/ NOT NULL constraint failed: checkout_order.total`
+When deleting an order, total becomes null despite being a required field. Fixed by resetting total to zero after clearing.
+- When product variables being added to the cart used `get_object_or_404` but only validated the variant by its date and time fields not the product! This slipped by for a long time as I had not created variants with overlapping times (Shouldn't happen anyway as only one class can be run at a time but still) Adding an additional param to the `get_object_or_404` to also filter by the product solved this.
+- If a customer has purchased a long form course but the course info has not been added yet (the videos of courses would not be added until after the first class) the profile page could not load the details even though user has paid for course. This was because they view was trying to fetch non existant data. This was fixed by adding an if statement to check if the content is created yet as there will be times when no content is available yet
+
 
 <a name="deployment"></a>
 
