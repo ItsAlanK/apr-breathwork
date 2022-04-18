@@ -158,6 +158,8 @@ A small model was also made to hold about us information in an editable format. 
 | image | ImageField  |  |
 
 
+If considered earlier in development the UserProfiles model could have been given a way to house enrolled courses to save some checks that are currently done in views to verify if a user can view the long form course page content.
+
 <a name="wireframes"></a>
 
 ### Wireframes ###
@@ -207,6 +209,7 @@ Main colors chosen for site (Yellow and Brown/Grey) were chosen to match current
     - Limit can be lowered for 1 on 1 classes when creating variants.
 - Store admins have extra options in nav and product details pages allowing them to create now products and variants or edit/delete existing ones.
     - When creating products can set attendance limit, assign a google meet link for class, set time/dates for variants and set wheether an account is required to purchase a given product.
+    - Create product/variant page uses JQuery and a button to dynamically change between two options with a single view. POSTing different parameters through url for each.
 - Cart stored in user session to save cart if user navigates away from store without purchasing items.
 - Secure card checkout using Stripe.
 - Confirmation emails sent to customer when order is completed with link to join session.
@@ -223,6 +226,9 @@ Main colors chosen for site (Yellow and Brown/Grey) were chosen to match current
 
 ### Potential Future Features ###
 
+- Logged in customers currently do not have a way to edit their username/email. A form similar to checkout for less payment section could be used to edit these from profile page.
+- Youtube URL upload currently requires the url to be manually edited to contain the `/embed/` instead of `/watch/v=` param. This could be managed better by allowing regular url upload and cleaning the url in the view before passing it to the template.
+- Email system is pretty limited at the moment. With more work and some extra models staff could be given the ability to create and edit email templates before they are sent out. Email formatting is also quite basic in current form.
 
 ## Marketing ##
 <a name="marketing"></a>
