@@ -164,6 +164,20 @@ A small model was also made to hold about us information in an editable format. 
 
 Wireframes have been made for desktop, tablet and mobile versions of each page of the site. Links to each can be found below. Wireframes were created using [**Balsamiq**](https://balsamiq.com/wireframes/)
 
+In most cases mobile and tablet wireframes' design were identical save for more or less padding between items. Therefore they have been grouped together in some instances.
+
+![Desktop Homepage Wireframe](docs/design/wireframes/desktop-wireframes/homepage-desktop.png)
+
+![Desktop Product Page Wireframe](docs/design/wireframes/desktop-wireframes/product-list-desktop.png)
+
+![Desktop Product Details Wireframe](docs/design/wireframes/desktop-wireframes/product-detail-desktop.png)
+
+![Desktop Cart Wireframe](docs/design/wireframes/desktop-wireframes/cart-desktop.png)
+
+![Desktop Checkout Wireframe](docs/design/wireframes/desktop-wireframes/checkout-desktop.png)
+
+All wireframes can be viewed in these folders for [Desktop Wireframes](docs/design/wireframes/desktop-wireframes) and [Mobile Wireframes](docs/design/wireframes/mobile-wireframes/)
+
 <a name="colors"></a>
 
 ### Colors & Fonts ###
