@@ -331,6 +331,8 @@ These are the steps needed in order to deploy this project locally through an ID
 
 ### Heroku Deployment ###
 
+**NOTE** at the time of completing this project Heroku had issues deploying directly from GitHub and required using their CLI instead. More can be found about this process [here.](https://devcenter.heroku.com/articles/heroku-cli)
+
 To deploy this project to Heroku to be used remotely:
 
 1.  Create an account with [Heroku](https://www.herokuapp.com/) if needed. Create a new project and give it a name. 
