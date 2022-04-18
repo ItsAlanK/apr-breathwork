@@ -1,6 +1,5 @@
 # APR Breathwork #
 
-![Example of image on all devices](docs/design/responsive-img.png)
 APR Breathwork is an ecommerce site designed to be used in the future by my partner, [**Aoife**](https://www.instagram.com/aoife.p.r/), who is currently in training to be a breathwork coach. After her studies she will be providing 1 to 1 and group breathwork classes both as 1 offs and 6 week courses. So she will be in need of a website where she can both advertise and sell these courses and classes
 
 This platform will provide user's with a platform where they can:
@@ -133,6 +132,30 @@ Below you will find the structure and models that are used in the database for t
 | is_paid_member | BooleanField  | Default False  |
 
 `is_paid_member` is set to True if the user purchases a multi session course to access replays of classes (Not available for once offs) Gets set back to False after set amount of time has elapsed since `paid_member_from`.
+
+Some additional models were added later in production to solve some other obstacles. The CourseInfo and Urls models were used to store the actual course information as long form courses require the live classes to be uploaded to the site the be rewatchable afterwards. This was done by saving each course and pairing it with Urls for each class which can be iterated on to output them all to a page gated by checks to make sure the user has bought the course.
+
+|   | CourseInfo Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| course  | OnetoOneField  | Products |
+| variant | ForeignKey  | ProductVariant |
+
+|   | Urls Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| course  | ForeignKey  | CourseInfo |
+| class_no | IntegerField  |  |
+| url | URLField  |  |
+
+A small model was also made to hold about us information in an editable format. The model is limited to a single entry that can be updated.
+
+|   | AboutUs Model  |   |
+|---|---|---|
+| id  | IntegerField  |   |
+| content  | Charfield  |  |
+| imageurl | UrlField  |  |
+| image | ImageField  |  |
 
 
 <a name="wireframes"></a>
