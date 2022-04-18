@@ -196,6 +196,29 @@ Main colors chosen for site (Yellow and Brown/Grey) were chosen to match current
 
 ### Existing Features ###
 
+- User authentication, registration and sign in with Django allauth.
+- Header navigation allowing for searching of products by title or description as well as filtering by category using menu items.
+- Products page displaying list of products on store. Page can be filtered using search and category queries to narrow results on page.
+- Product detail page for each product allowing users to view more info about courses such as description, duration and available dates/times.
+- Long form courses which allow users to return to the site after live classes to view replys require an account before they can be purchased. Page redirects to sign in on these details pages if no account detected.
+- Users given options of any available date time combos to purchase. When a variant is bought the places sold for that variant increments and locks product once places sold = attendance limit.
+    - Each date/time combo is a variant which can be purchased only once at a time to prevent doubling up on same date.
+    - Google meet (how classes are delivered) has a 100 participant limit on their video calls so variables given max limit or 100 that can be purchased
+    - Limit can be lowered for 1 on 1 classes when creating variants.
+- Store admins have extra options in nav and product details pages allowing them to create now products and variants or edit/delete existing ones.
+    - When creating products can set attendance limit, assign a google meet link for class, set time/dates for variants and set wheether an account is required to purchase a given product.
+- Cart stored in user session to save cart if user navigates away from store without purchasing items.
+- Secure card checkout using Stripe.
+- Confirmation emails sent to customer when order is completed with link to join session.
+- User Profile page with:
+    -  Past orders with links to their meet links and order confirmation pages.
+    - Profile Summary
+    - Link to long form course content if available. (Uploaded by staff after each classes)
+- Long form courses have page to display recorded videos of sessions for review by students. Videos uploaded to youtube and embeded to save space and load strain on server.
+- About us page with content editable from admin panel.
+- Contact us page which allows users to message store owner. Send email to store email address with message and sender details
+
+
 <a name="future-features"></a>
 
 ### Potential Future Features ###
