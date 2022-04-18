@@ -249,6 +249,43 @@ They can also be used to provide value to followers by teaching and offering fre
 
 ## Testing ##
 
+Testing based on user stories:
+- Epic One: Browsing Content
+    - As a user I can view a product list showing all available courses
+        - Main products page displays full list of available products. A promenant button on the homepage directs users to this page and can also be reached from nav options. **Passed**
+    - As a user I can view individual products for all the details
+        - Upon selecting any product the user is brough to a detailed view of this product. **Passed**
+    - As a user I can view and select available times/dates for the class I want
+        - Each product detail page provides dropdown forms showing all available class dates and times for each product. Times are dynamic and change dependant on date selected. **Passed**
+    - As a user I can search for specific products I am looking for
+        - A search bar is present in the header of all pages which can be used to search products based on both title and description. **Passed**
+    - As a user I can read additional information about the business
+        - Site includes and about us page editable and updateable by store admins. **Passed**
+
+- Epic Two: User Accounts
+    - As a user I can register for an account to save my details
+        - Optional profiles can be created by users to save their order history as well as provide links to their past classes. Profiles are required for some content on the site. **Passed**
+    - As a user I can log in and out of my account
+        - Header interface contains easily accessed log in/ register and log out options depending on current status.**Passed**
+    - As a user I can view my order history when logged in
+        - Profile page contains an order history which redirects to the confirmation page of that order. **Passed**
+
+- Epic Three: Accepting payment
+    - As a user I can view items in my cart
+        - Cart items are saved in session so persist when site is closed. Upon adding an item to cart a popup message provides a link to the cart page to review all contents. A cart icon is also present on every page showing a running total cost and proving an easy way to reach the cart page. **Passed**
+    - As a user I can move my cart items to checkout for payment
+        - Cart items can be removed from cart page or user can move from cart to checkout for payment and order creation. **Passed**
+    - As a user I can securely provide payment details to pay for items in my cart
+        - Checkout page contains a secure and validated form field for inputting card details after which payment is captured through stripe and their order is created. **Passed**
+
+- Epic Four: Admin controls
+    - As a site admin I can add new products to the store
+        - When logged in as an admin the user can select add product/variant from their account menu in the header where they can add a product or a variant for an eisting product. If a product is created the user is immediately sent to the page to creat a variant too. **Passed**
+    - As a site admin I can edit existing product details
+        - When logged in as an admin product detail pages hold links to allow the user to edit the current product or to select a variant of the product to edit the variant. **Passed**
+    - As a site admin I can delete products from the store
+        - When logged in as an admin product detail pages hold links to allow the user to delete the current product or to select a variant of the product to edit the variant. **Passed**
+
 
 ### Manual Testing ###
 
