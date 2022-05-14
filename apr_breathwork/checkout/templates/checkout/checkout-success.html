@@ -9,6 +9,10 @@
     | Order Confirmation
 {% endblock %}
 
+{% block extra_meta %}
+    <meta name="description" content="Thanks for your order. You will receive an email with all the details for your classes shortly!">
+{% endblock %}
+
 {% block page_header %}
     {% include 'layout/header-padding.html'%}
 {% endblock%}

@@ -5,6 +5,10 @@
     | Add Product
 {% endblock %}
 
+{% block extra_meta %}
+    <meta name="description" content="Admin only page for creating new products and variants">
+{% endblock %}
+
 {% block page_header %}
     {% include 'layout/header-padding.html'%}
 {% endblock%}

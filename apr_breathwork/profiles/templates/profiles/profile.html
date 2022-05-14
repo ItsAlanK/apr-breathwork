@@ -9,6 +9,10 @@
     | My Profile
 {% endblock %}
 
+{% block extra_meta %}
+    <meta name="description" content="Profile page for user information and order history">
+{% endblock %}
+
 {% block page_header %}
     {% include 'layout/header-padding.html'%}
 {% endblock%}

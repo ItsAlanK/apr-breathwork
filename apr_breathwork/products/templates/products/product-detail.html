@@ -5,6 +5,10 @@
     | {{ product.name }}
 {% endblock %}
 
+{% block extra_meta %}
+    <meta name="description" content="{{ product.description | striptags | truncatechars:160 }}">
+{% endblock %}
+
 {% block page_header %}
     {% include 'layout/header-padding.html'%}
 {% endblock%}

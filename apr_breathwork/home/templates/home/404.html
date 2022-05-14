@@ -5,6 +5,10 @@
     | Page Not Found
 {% endblock %}
 
+{% block extra_meta %}
+    <meta name="description" content="404 Page not found">
+{% endblock %}
+
 {% block page_header %}
     {% include 'layout/header-padding.html'%}
 {% endblock%}

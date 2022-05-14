@@ -9,6 +9,10 @@
     | {{ course_info.course }}
 {% endblock %}
 
+{% block extra_meta %}
+    <meta name="description" content="Student Portal to access all past classes for {{ course_info.course }}">
+{% endblock %}
+
 {% block page_header %}
     {% include 'layout/header-padding.html'%}
 {% endblock%}
