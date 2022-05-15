@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow: /accounts/
 Disallow: /cart/
-Sitemap:
+Sitemap: https://apr-breathwork.herokuapp.com/sitemap.xml
