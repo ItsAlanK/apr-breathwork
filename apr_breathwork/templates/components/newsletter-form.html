@@ -1,0 +1,11 @@
+<form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+
+    <div class="form-group text-center">
+      <label><small>Subscribe for my latest news and offers!</small></label><br>
+      <input type="email" name="email" placeholder="Enter Email to Subscribe">
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <button class="btn btn-yellow" type="submit">Submit</button>
+    </div>
+
+</form>
