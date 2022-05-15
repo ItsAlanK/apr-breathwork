@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /accounts/
+Disallow: /cart/
+Sitemap:
