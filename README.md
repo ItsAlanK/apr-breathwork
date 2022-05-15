@@ -247,6 +247,8 @@ They can also be used to provide value to followers by teaching and offering fre
 
 A Newsletter signup form exists in the Footer of all pages allowing users to sign up to a newsletter. This subscribes users to a list with MailChimp which can be used to target users with deals and updates in the future. Mailchimp automatically filters fake and repeat signups and adds valid emails to the contacts list.
 
+An email added using this API can be seen below which confirms the feature functions as intended.
+
 ![MailChimp Contacts List](docs/design/mailchimp-contacts.png)
 
 <a name="testing"></a>
