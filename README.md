@@ -245,6 +245,10 @@ The posts can be used to both directly promote the store by linking to the produ
 
 They can also be used to provide value to followers by teaching and offering free tasters of what would be learned by purchasing the classes.
 
+A Newsletter signup form exists in the Footer of all pages allowing users to sign up to a newsletter. This subscribes users to a list with MailChimp which can be used to target users with deals and updates in the future. Mailchimp automatically filters fake and repeat signups and adds valid emails to the contacts list.
+
+![MailChimp Contacts List](docs/design/mailchimp-contacts.png)
+
 <a name="testing"></a>
 
 ## Testing ##
