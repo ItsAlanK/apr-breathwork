@@ -4,7 +4,6 @@ from django.test import TestCase
 class TestViews(TestCase):
     """ Class for testing home app views """
 
-
     def test_get_homepage_response(self):
         """Test response for homepage """
         response = self.client.get('/')
