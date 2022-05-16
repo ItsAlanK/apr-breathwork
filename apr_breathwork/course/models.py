@@ -20,6 +20,7 @@ class Urls(models.Model):
     def __str__(self):
         return "Week " + str(self.class_no)
 
+
 class CourseInfo(models.Model):
     """ Model for course info """
 
@@ -27,7 +28,8 @@ class CourseInfo(models.Model):
         """ Adjust plural of model name in admin """
         verbose_name_plural = 'Course Info'
 
-    course = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='course')
+    course = models.OneToOneField(
+        Product, on_delete=models.CASCADE, related_name='course')
     variant = models.ForeignKey(ProductVariant, on_delete=models.CASCADE)
 
     def __str__(self):
