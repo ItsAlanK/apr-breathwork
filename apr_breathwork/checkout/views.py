@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from django.shortcuts import render, redirect,reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -89,9 +89,9 @@ def checkout(request):
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was a problem with your form. '
-                    'Please confirm your details are correct.'
-                    )
+            messages.error(
+                request, 'There was a problem with your form. '
+                'Please confirm your details are correct.')
     else:
         cart = request.session.get('cart', {})
         if not cart:
@@ -110,9 +110,9 @@ def checkout(request):
         order_form = OrderForm()
 
     if not stripe_public_key:
-        messages.warning(request,
-            'Stripe public key missing. Dont forget to set it in your environment!'
-            )
+        messages.warning(
+            request, 'Stripe public key missing. '
+            'Dont forget to set it in your environment!')
 
     template = 'checkout/checkout.html'
     context = {
@@ -138,23 +138,26 @@ def checkout_success(request, order_number):
         Your Order number is {order_number}. A confirmation email \
         will be sent to {order.email}.')
 
-
     # Confirmation Email
 
     email_subject = 'APR Breathwork Order Confirmation'
-    email_body = (f'Hi there! Thanks for your Booking. Your order number is {order_number}.\n'
+    email_body = (
+        'Hi there! Thanks for your Booking. '
+        f'Your order number is {order_number}.\n'
         'Looking forward to seeing you. You can join the session '
         f'by following the link at the given time. \n')
 
     line_items = OrderLineItem.objects.filter(order=order)
     for item in line_items:
-        email_body += (f'{item.product_variant} - '
+        email_body += (
+            f'{item.product_variant} - '
             f'{item.product_variant.meeting_invite_link}\n')
     email_body += '\n Aoife PR'
     email_sender = settings.DEFAULT_FROM_EMAIL
     email_recipient = order.email
 
-    send_mail(email_subject,
+    send_mail(
+        email_subject,
         email_body, email_sender,
         [email_recipient], fail_silently=False)
 
