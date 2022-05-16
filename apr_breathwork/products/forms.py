@@ -30,13 +30,15 @@ class ProductVariantForm(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(
                 format=('%Y-%m-%d'),
-                attrs={'class': 'form-control',
+                attrs={
+                    'class': 'form-control',
                     'placeholder': 'Select a date',
                     'type': 'date'
                     }),
             'time': forms.TimeInput(
                 format=('%H:%M'),
-                attrs={'class': 'form-control',
+                attrs={
+                    'class': 'form-control',
                     'placeholder': 'Select a time',
                     'type': 'time'
                     }),
