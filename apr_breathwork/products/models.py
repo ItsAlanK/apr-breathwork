@@ -22,7 +22,8 @@ class Category(models.Model):
 
 class Product(models.Model):
     """ Model for base products """
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+        'Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     description = RichTextField()
     duration = models.IntegerField(default=0)
@@ -42,7 +43,8 @@ class ProductVariant(models.Model):
     time = models.TimeField(default=datetime.time(13, 00))
     attendance_limit = models.IntegerField(default=100)
     places_sold = models.IntegerField(editable=False, default=0)
-    meeting_invite_link = models.URLField(max_length=1024, null=True, blank=True)
+    meeting_invite_link = models.URLField(
+        max_length=1024, null=True, blank=True)
 
     def __str__(self):
         product = self.product.name
