@@ -29,12 +29,13 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('course/', include('course.urls')),
     path('info/', include('info.urls')),
-    path("robots.txt",
-    TemplateView.as_view(template_name="robots.txt",
-    content_type="text/plain")),
-    path("sitemap.xml",
-    TemplateView.as_view(template_name="sitemap.xml",
-    content_type="text/plain")),
+    path(
+        "robots.txt", TemplateView.as_view(
+            template_name="robots.txt", content_type="text/plain")),
+    path(
+        "sitemap.xml",
+        TemplateView.as_view(
+            template_name="sitemap.xml", content_type="text/plain")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404='home.views.page_not_found_handler'
+handler404 = 'home.views.page_not_found_handler'
