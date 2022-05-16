@@ -27,7 +27,8 @@ def products(request):
             if not query:
                 messages.error(request, "No search query entered.")
                 return redirect(reverse('products'))
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
             products = products.filter(queries)
 
     context = {
@@ -73,12 +74,15 @@ def add_product(request, variant=None):
             form = ProductVariantForm(request.POST)
             if form.is_valid():
                 variant = form.save()
-                messages.success(request, 'Successfully added Product Variant!')
-                return redirect(reverse('product_detail', args=[variant.product.id]))
+                messages.success(
+                    request, 'Successfully added Product Variant!')
+                return redirect(
+                    reverse('product_detail', args=[variant.product.id]))
             else:
-                messages.error(request,
-                    'Failed to add product variant. Please check form details.'
-                )
+                messages.error(
+                    request,
+                    'Failed to add product variant. '
+                    'Please check form details.')
         else:
             variant_form = ProductVariantForm()
 
@@ -96,7 +100,9 @@ def add_product(request, variant=None):
                 messages.success(request, 'Successfully added Product!')
                 return redirect(reverse('add_product', args=['variant']))
             else:
-                messages.error(request, 'Failed to add product. Please check form details.')
+                messages.error(
+                    request,
+                    'Failed to add product. Please check form details.')
         else:
             form = ProductForm()
 
@@ -124,7 +130,9 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please check form details.')
+            messages.error(
+                request,
+                'Failed to update product. Please check form details.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -136,6 +144,7 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
 
 def edit_product_variant(request, product_id, variant_id=None):
     """ Edit a variant """
@@ -152,10 +161,13 @@ def edit_product_variant(request, product_id, variant_id=None):
             form = ProductVariantForm(request.POST, instance=variant)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'Successfully updated product variant.')
+                messages.success(
+                    request, 'Successfully updated product variant.')
                 return redirect(reverse('product_detail', args=[product.id]))
             else:
-                messages.error(request, 'Failed to update product. Please check form details.')
+                messages.error(
+                    request,
+                    'Failed to update product. Please check form details.')
         else:
             form = ProductVariantForm(instance=variant)
             messages.info(request, f'You are editing {variant}')
@@ -175,7 +187,8 @@ def edit_product_variant(request, product_id, variant_id=None):
 
         if request.method == 'POST':
             selected_variant = request.POST.get('variant')
-            return redirect('edit_product_variant', product_id, selected_variant)
+            return redirect(
+                'edit_product_variant', product_id, selected_variant)
 
         template = 'products/edit-product-variant.html'
         context = {
