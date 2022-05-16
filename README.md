@@ -454,6 +454,7 @@ To deploy this project to Heroku to be used remotely:
 - [Amazon AWS](https://aws.amazon.com/) for storage
 - [Heroku](https://dashboard.heroku.com/) for server hosting
 - [PostgreSQL](https://www.postgresql.org/) for database
+- [MailChimp](https://mailchimp.com/) for email marketing newsletter in footer
 
 
 <a name="credits"></a>
