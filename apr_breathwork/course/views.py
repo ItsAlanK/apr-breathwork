@@ -32,17 +32,18 @@ def course_page(request, course_id):
             if variant in purchases:
                 return render(request, 'course/course.html', context)
             else:
-                messages.error(request, 'Oops, you must purchase this course '
-                'to view its content.'
-                )
+                messages.error(
+                    request, 'Oops, you must purchase this course '
+                    'to view its content.')
                 return redirect(f'/products/{product.id}')
         else:
-            messages.error(request, 'Oops, you must purchase this course '
-            'to view its content.'
-            )
+            messages.error(
+                request, 'Oops, you must purchase this course '
+                'to view its content.')
             return redirect(f'/products/{product.id}')
     else:
-        messages.error(request, 'Oops, if you have purchased this course '
+        messages.error(
+            request, 'Oops, if you have purchased this course '
             'please log in to your account to view its content. Otherwise '
             'create an account and purchase the course.'
             )
