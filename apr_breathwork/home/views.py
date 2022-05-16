@@ -38,17 +38,24 @@ def subscribe(email):
 
 
 def index(request):
-    """ View which returns index page and handles Mailchimp subscription form in footer """
+    """
+    View which returns index page and handles
+    Mailchimp subscription form in footer
+    """
 
     if request.method == "POST":
         email = request.POST['email']
         submission = subscribe(email)
         redirect_url = request.POST.get('next', '/')
         if submission:
-            messages.success(request, "Email received. Thanks for subscribing! ")
+            messages.success(
+                request,
+                "Email received. Thanks for subscribing! ")
             return HttpResponseRedirect(redirect_url)
         else:
-            messages.error(request, "Please ensure you use are using a valid email and try again")
+            messages.error(
+                request,
+                "Please ensure you use are using a valid email and try again")
             return HttpResponseRedirect(redirect_url)
     else:
         return render(request, 'home/index.html')
