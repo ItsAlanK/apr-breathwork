@@ -255,6 +255,10 @@ An email added using this API can be seen below which confirms the feature funct
 
 ## Testing ##
 
+Site passes through [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapr-breathwork.herokuapp.com%2F) showing a single error for duplicated id `user-options` in the header/nav section which is due to both mobile and desktop versions loading though only one is displayed at a time.
+
+No CSS errors present when passing through [W3C Validation Service](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fapr-breathwork.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
+
 Testing based on user stories:
 - Epic One: Browsing Content
     - As a user I can view a product list showing all available courses
