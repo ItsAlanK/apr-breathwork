@@ -40,7 +40,7 @@ def profile(request):
     # buying a course this resets to false to stop empty
     # course membership section in template.
     if not course_exists:
-        profile.is_paid_member=False
+        profile.is_paid_member = False
         profile.save()
 
     template = 'profiles/profile.html'
@@ -50,7 +50,6 @@ def profile(request):
         'course_details': course_details,
         'course_ready': course_ready,
     }
-
 
     return render(request, template, context)
 
