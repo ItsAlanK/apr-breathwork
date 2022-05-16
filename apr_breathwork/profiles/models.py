@@ -29,6 +29,7 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     # Existing users: just save the profile
     instance.userprofile.save()
 
+
 @receiver(user_logged_in)
 def check_is_paid_status(sender, user, request, **kwargs):
     """
