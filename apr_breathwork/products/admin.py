@@ -23,7 +23,7 @@ class ProductVariantAdminInline(admin.TabularInline):
         'places_sold'
     )
 
-    readonly_fields=('places_sold',)
+    readonly_fields = ('places_sold',)
     ordering = ('date', 'time')
 
 
@@ -53,7 +53,7 @@ class ProductVariantAdmin(admin.ModelAdmin):
         'places_sold'
     )
 
-    readonly_fields=('places_sold',)
+    readonly_fields = ('places_sold',)
     ordering = ('date', 'time')
 
 
