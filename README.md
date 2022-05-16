@@ -255,6 +255,8 @@ An email added using this API can be seen below which confirms the feature funct
 
 ## Testing ##
 
+All custom written Python passes through [Pep8 Validator](http://pep8online.com/) with no errors or warnings.
+
 Site passes through [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapr-breathwork.herokuapp.com%2F) showing a single error for duplicated id `user-options` in the header/nav section which is due to both mobile and desktop versions loading though only one is displayed at a time.
 
 No CSS errors present when passing through [W3C Validation Service](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fapr-breathwork.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
@@ -339,6 +341,8 @@ For this project to work you will need an account on [Amazon AWS](https://aws.am
 
 Your will also need to set up a [Stripe account](https://dashboard.stripe.com/) for free and use it to get your Stripe Puclic and Secret keys which are needed to processes payments.
 
+A [MailChimp Account](https://mailchimp.com/) is needed for newsletter signup in the footer. This is a free service that can be used to collect contacts to run marketing campaigns to. With this account you can generate an API key and find your email list ID.
+
 <a name="local-deployment"></a>
 
 ### Local Deployment ###
@@ -360,7 +364,13 @@ These are the steps needed in order to deploy this project locally through an ID
     STRIPE_SECRET_KEY = 'YOUR STRIPE SECRET KEY'
     SECRET_KEY = 'YOUR DJANGO SECRET KEY'
     DEVELOPMENT = 1
+    MAILCHIMP_API_KEY = 'YOUR MAILCHIMP API KEY'
+    MAILCHIMP_DATA_CENTER = 'The ending of your API-KEY after the `-`'
+    MAILCHIMP_EMAIL_LIST_ID = 'YOUR EMAIL LIST ID' 
     ```
+
+    [MailChimp email list ID can be found using this guide](https://mailchimp.com/help/find-audience-id/).
+
     Ensure you add this env.py file to your .gitignore file if you are pushing the project to a live repository to prevent leaking information. If you fail to do this, deactivate and change any keys stored in the file immediately.
 
     Your ```DATABASE_URL``` variable is not needed if you only intend to run on a local machine as the project uses a local database when debug is on however in a live environment this will be required. _(More on this in the live deployment)_
