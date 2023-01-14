@@ -11,7 +11,7 @@ The platform will also allow admins of the site to add edit and delete products 
 
 This project will use the Django framework for a MVC based application using Postgres databases to manage information.
 
-[**Link to Live Site**](https://apr-breathwork.herokuapp.com/)
+[**Live Site Currently Down due to Heroku removing Free Plan**]
 
 ## Table of contents 
 
