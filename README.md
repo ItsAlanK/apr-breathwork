@@ -463,5 +463,5 @@ To deploy this project to Heroku to be used remotely:
 
 A big thanks as always to [Simen](https://dehlin.dev/) for coaching me through this project and offering very useful tips and suggestions on how to improve and elevate it.
 
-A thanks also to my girlfriend Aoife for both helping me with the content for the site and hearing me out as I talk through the problems she has know knowledge of and even less interest in.
+A thanks also to my girlfriend Aoife for both helping me with the content for the site and hearing me out as I talk through the problems she has no knowledge of and even less interest in.
 
